@@ -1,3 +1,4 @@
 baseURL: "https://www.progettodighe.it/"
 languageCode: "it-it"
 title: "ProgettoDighe"
+theme: "ananke"
