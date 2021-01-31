@@ -34,67 +34,10 @@
     {{ block "header" . }}{{ partial "header-full.html" .}}{{ end }}
 
     <main class="w-100">
-    [(#REM) Brevi]
-    <B_breves>
-        <section class="bg-lightest-blue w-100">
-    <BOUCLE_breves(BREVES) {!par date} {0,1}>
-        <article class="ph3 ph5-ns pv4 pv5-ns">
-            <div class="mw8 center">
-                <h1 class="f3 tracked ttu lh-title #EDIT{titre}">#TITRE</h1>
-                <p class="f4 measure lh-copy #EDIT{texte}">#TEXTE*</p>
-            </div>
-        </article>
-    </BOUCLE_breves>
-        </section>
-    </B_breves>
-
-    [(#REM) Articoli più popolari]
-    <B_poparticles>
-        <section class="bg-washed-blue w-100">
-            <article class="ph3 ph5-ns pv4 pv5-ns">
-                <div class="mw8 center">
-                    <p class="f3 tracked ttu lh-title">Gli articoli pi&ugrave; popolari</p>
-                    <ul class="list pl1 measure center">
-    <BOUCLE_poparticles(ARTICLES) {par popularite} {inverse} {0,5}>
-                        <li>
-                            <a class="f5 f4-ns link black-80 dim" href="#URL_ARTICLE">
-                                <div class="lh-copy pv2 ba bl-0 bt-0 br-0 b--dotted b--black-30">#TITRE</div>
-                            </a>
-                        </li>
-    </BOUCLE_poparticles>
-                    </ul>
-                </div>
-            </article>
-        </section>
-    </B_poparticles>
-
-    <a class="link dt w-100 bb b--black-10 pb2 mt2 dim blue" href="#URL_ARTICLE"></a>
-
-    [(#REM) Articoli più recenti]
-    <B_newarticles>
-        <section class="w-100">
-            <div class="ph3 ph5-ns pv4 pv5-ns">
-            <div class="mw8 center">
-                <p class="f3 tracked ttu lh-title">Gli ultimi articoli pubblicati</p>
-    <BOUCLE_newarticles(ARTICLES) {par date_modif} {inverse} {id_rubrique!=23} {0,10}>
-                <article class="bb pb3">
-                    <h1 class="f3 ttu lh-title"><a class="link black-80" href="#URL_ARTICLE">#TITRE</a></h1>
-                    [<div class="aspect-ratio aspect-ratio--16x9 mb4">
-                        <a class="link black-80" href="#URL_ARTICLE">
-                            <div class="aspect-ratio--object cover br4" style="background:url((#LOGO_ARTICLE{1200,0}|extraire_attribut{src}|url_absolue)) center;"></div>
-                        </a>
-                    </div>]
-
-                    [<p class="f5 f4-ns lh-copy">(#INTRODUCTION|supprimer_tags)</p>]
-                    <a class="link black-80" href="#URL_ARTICLE">(continua) <i class="fas fa-arrow-alt-circle-right"></i></a>]
-                </article>
-    </BOUCLE_newarticles>
-            </div> 
-            </div>
-        </section>
-    </B_newarticles>
+    {{ block "main" . }}
+    {{ end }}
     </main>
 
-    [(#INCLUDE{fond=include/footer}{skel=#SQUELETTE})]      
+    {{ block "footer" . }}{{ partial "footer.html" . }}{{ end }}
 </body>
 </html>
