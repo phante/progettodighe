@@ -29,9 +29,11 @@
             <a class="link hover-silver near-black dib h2 w2 mr3" href="https://www.youtube.com/user/progettodighe" title="youtube">
                 <i class="fab fa-youtube"></i>
             </a>
-            <a class="link hover-silver near-black dib h2 w2 mr3" href="#URL_PAGE{backend}" title="RSS">
+            {{ with .OutputFormats.Get "rss" -}}
+            <a class="link hover-silver near-black dib h2 w2 mr3" href="{{ .Permalink }}" title="RSS">
                 <i class="fas fa-rss"></i>
             </a>
+            {{ end -}}
         </div>
     </div>
 </footer>
