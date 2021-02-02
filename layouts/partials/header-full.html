@@ -1,11 +1,11 @@
 <header class="mw8 mt3-ns pa1 center">
     <div class="flex flex-wrap">
         <div class="w-30 w-20-ns">
-            <a class="link" href="{{ .Site.Home.Permalink }}" title="Home"><img class="db h-auto" src="/asset/brand/PDLogo.svg" alt="ProgettoDighe Logo" width="150px" height="150px"></a>
+            <a class="link" href="{{ .Site.Home.RelPermalink }}" title="Home"><img class="db h-auto" src={{ "/asset/brand/PDLogo.svg" | relURL }} alt="ProgettoDighe Logo" width="150px" height="150px"></a>
         </div>
         <div class="w-70 w-80-ns pa2">
             <div class="mt1">
-                <a class="db f3 f1-ns lh-title fw6 mt0 mb1 link black-80" href="{{ .Site.Home.Permalink }}" title="Home" >{{ .Site.Title }}</a>
+                <a class="db f3 f1-ns lh-title fw6 mt0 mb1 link black-80" href="{{ .Site.Home.RelPermalink }}" title="Home" >{{ .Site.Title }}</a>
                 {{ with .Site.Params.description }}
                 <small class="db f6 f4-ns lh-copy tj">{{ . }}</small>
                 {{ end }}
@@ -15,9 +15,9 @@
             
     <nav class="bt bb tc mt2 mb2">
         {{ range .Site.Sections.ByWeight }}
-        <a class="f6 link bg-animate black-80 hover-bg-lightest-blue dib pa3 ph4-l" title="{{ .Title }}" href="{{ .Permalink }}">{{ .Title }}</a>
+        <a class="f6 link bg-animate black-80 hover-bg-lightest-blue dib pa3 ph4-l" title="{{ .Title }}" href="{{ .RelPermalink }}">{{ .Title }}</a>
         {{ end }}
-        <a class="f6 link bg-animate black-80 hover-bg-lightest-blue dib pa3 ph4-l" title="Forum" href="{{ .Site.BaseURL }}forum">Forum</a>
-        <a class="f6 link bg-animate black-80 hover-bg-lightest-blue dib pa3 ph4-l" title="Gallery" href="{{ .Site.BaseURL }}gallery">Gallery</a>
+        <a class="f6 link bg-animate black-80 hover-bg-lightest-blue dib pa3 ph4-l" title="Forum" href={{ "../forum"  | relURL }}>Forum</a>
+        <a class="f6 link bg-animate black-80 hover-bg-lightest-blue dib pa3 ph4-l" title="Gallery" href={{ "../gallery" | relURL }}>Gallery</a>
     </nav>
 </header>    

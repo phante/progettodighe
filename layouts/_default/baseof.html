@@ -7,12 +7,21 @@
     <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{if .IsPage}}{{ .Summary }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}{{ end }}">    
     {{ hugo.Generator }}
 
-    <link rel="apple-touch-icon" sizes="180x180" href="/asset/icon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/asset/icon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/asset/icon/favicon-16x16.png">
-    <link rel="manifest" href="/asset/icon/site.webmanifest">
+    <link rel="apple-touch-icon" sizes="180x180" href={{ "/asset/icon/apple-touch-icon.png" | relURL }} >
+    <link rel="icon" type="image/png" sizes="32x32" href={{ "/asset/icon/favicon-32x32.png" | relURL }} >
+    <link rel="icon" type="image/png" sizes="16x16" href={{ "/asset/icon/favicon-16x16.png" | relURL }} >
+    <link rel="manifest" href={{ "/asset/icon/site.webmanifest" | relURL }} >
 
-    <link rel="stylesheet" href="/asset/css/tachyons.css">
+    {{ with resources.Get "/asset/css/tachyons.css" }}
+    {{ $style := . | minify | fingerprint }}
+    <link rel="stylesheet" href={{ $style.RelPermalink }}>
+    {{ end }}
+
+    {{ with resources.Get "/asset/fa/js/all.js" }}
+    {{ $style := . | minify | fingerprint }}
+    <script defer src={{ $style.RelPermalink }}></script>
+    {{ end }}
+
 
     {{- template "_internal/opengraph.html" . -}}
     {{- template "_internal/schema.html" . -}}
@@ -21,8 +30,6 @@
     {{ with .OutputFormats.Get "rss" -}}
     {{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
     {{ end -}}
-
-    <script defer src="https://use.fontawesome.com/releases/v5.14.0/js/all.js"></script>
 
     {{ if eq (getenv "HUGO_ENV") "production" | or (eq .Site.Params.env "production")  }}
     <link rel="preconnect" href="https://www.google-analytics.com">
