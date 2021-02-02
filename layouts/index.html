@@ -16,14 +16,12 @@
       <h1 class="f3 ttu lh-title"><a class="link black-80" href="{{ .Permalink }}">{{ .Title }}</a></h1>
       <p>Tempo di lettura {{ .ReadingTime }} minut{{ if eq .ReadingTime 1 }}o{{else}}i{{ end }}</p>
 
-      {{ with .Resources.Match "logo.jpg" }}
-      {{ range . }}
+      {{ with .Resources.GetMatch "logo.jpg" }}
       <div class="aspect-ratio aspect-ratio--16x9 mb4">
         <a class="link black-80" href="{{ .RelPermalink }}">
           <div class="aspect-ratio--object cover br4" style="background:url({{ .RelPermalink }}) center;"></div>
         </a>
       </div>  
-      {{ end }}
       {{ end }}
 
       <p class="f5 f4-ns lh-copy">{{ .Summary }}</p>
