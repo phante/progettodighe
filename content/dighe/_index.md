@@ -8,5 +8,3 @@ weight: 1
 ---
 
 This is the diga list!
-
-![alt text](front_image.jpg)
