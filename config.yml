@@ -1,10 +1,11 @@
-baseURL: https://www.progettodighe.it/
+baseURL: "https://dev.progettodighe.it/main"
 title: ProgettoDighe
 params:
   webmaster: "Elvis Del Tedesco"
   webmasterMail: "info@progettodighe.it"
   description: Il punto di riferimento per gli appassionati di dighe, centrali idroelettriche e opere idrauliche.
-languageCode: it
+defaultContentLanguage: it
+languageCode: it-it
 theme: ananke
 enableGitInfo: true
 enableRobotsTXT: true
