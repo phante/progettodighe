@@ -1,8 +1,8 @@
 ---
-title: "Vajont"
-date: 2001-01-31T15:43:57+01:00
+title: "BauMandara"
+date: 2021-02-03T18:14:40+01:00
 draft: true
-alias: "/le-dighe/article/Vajont"
+alias: "/le-dighe/article/BauMandara"
 keywords: 
     - diga
 condizione: ""

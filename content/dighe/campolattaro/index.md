@@ -1,8 +1,8 @@
 ---
-title: "Vajont"
-date: 2001-01-31T15:43:57+01:00
+title: "Campolattaro"
+date: 2021-02-03T18:15:19+01:00
 draft: true
-alias: "/le-dighe/article/Vajont"
+alias: "/le-dighe/article/Campolattaro"
 keywords: 
     - diga
 condizione: ""

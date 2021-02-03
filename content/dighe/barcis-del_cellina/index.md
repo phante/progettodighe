@@ -1,8 +1,8 @@
 ---
-title: "Vajont"
-date: 2001-01-31T15:43:57+01:00
+title: "Barcis Del_cellina"
+date: 2021-02-03T18:14:13+01:00
 draft: true
-alias: "/le-dighe/article/Vajont"
+alias: "/le-dighe/article/Barcis Del_cellina"
 keywords: 
     - diga
 condizione: ""

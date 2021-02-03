@@ -1,8 +1,8 @@
 ---
-title: "Vajont"
-date: 2001-01-31T15:43:57+01:00
+title: "Alpe_gera"
+date: 2021-02-03T18:13:21+01:00
 draft: true
-alias: "/le-dighe/article/Vajont"
+alias: "/le-dighe/article/Alpe_gera"
 keywords: 
     - diga
 condizione: ""
