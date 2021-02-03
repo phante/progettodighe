@@ -1,3 +1,10 @@
+{{ define "header_css" }}
+{{ with resources.Get "/asset/css/autoComplete.css" }}
+{{ $style := . | minify | fingerprint }}
+<link rel="stylesheet" href={{ $style.RelPermalink }}>
+{{ end }}
+{{ end }}
+
 {{ define "main" }}
 <section class="w-100">
     <header class="ph3 ph5-ns pv2">
@@ -66,4 +73,8 @@
         </div>
     </div>
 </section>
+{{ end }}
+
+{{ define "footer_scripts" }}
+{{- partial "autocomplete.html" . -}}
 {{ end }}

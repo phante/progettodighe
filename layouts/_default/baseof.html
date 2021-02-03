@@ -17,11 +17,12 @@
     <link rel="stylesheet" href={{ $style.RelPermalink }}>
     {{ end }}
 
-    {{ with resources.Get "/asset/fa/js/all.js" }}
-    {{ $style := . | minify | fingerprint }}
-    <script defer src={{ $style.RelPermalink }}></script>
-    {{ end }}
+    {{ block "header_css" . }}{{ end }}
 
+    {{ with resources.Get "/asset/fa/js/all.js" }}
+    {{ $fontAwesomeJS := . | minify | fingerprint }}
+    <script defer src={{ $fontAwesomeJS.RelPermalink }}></script>
+    {{ end }}
 
     {{- template "_internal/opengraph.html" . -}}
     {{- template "_internal/schema.html" . -}}
@@ -49,5 +50,6 @@
     </main>
 
     {{ block "footer" . }}{{ partial "footer.html" . }}{{ end }}
+    {{ block "footer_scripts" . }}{{ end }}
 </body>
 </html>
