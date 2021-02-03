@@ -1,4 +1,4 @@
-<script src="/main/asset/js/autoComplete.js"></script>
+<script type="text/javascript" src="/main/asset/js/autoComplete.js"></script>
 
 <script type="text/javascript">
     //https://tarekraafat.github.io/autoComplete.js
@@ -10,7 +10,7 @@
                 // Loading placeholder text
                 document.querySelector("#autoComplete").setAttribute("placeholder", "Loading...");
                 // Fetch External Data Source                    
-                const source = await fetch("#URL_SITE_SPIP/#URL_PAGE{json}&id_rubrique=#ENV{id_rubrique}");
+                const source = await fetch("/main/dighe/index.json");
                 const data = await source.json();
                 console.log("Caricati i dati");
                 // Returns Fetched data
@@ -45,7 +45,7 @@
         },
         onSelection: function (feedback) {
             document.querySelector("#autoComplete").blur();
-            window.location = "#URL_SITE_SPIP/#URL_PAGE{article}&id_article=" + feedback.selection.value.id;
+            window.location = feedback.selection.value.id;
         },
         noResults:() => {
                 const result = document.createElement("div");

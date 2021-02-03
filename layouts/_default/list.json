@@ -1,0 +1,8 @@
+[
+    {{ range .Pages }}
+    {
+        "url": "{{ .RelPermalink }}",
+        "title": "{{ .Title }}"
+    },
+    {{ end }}
+]
