@@ -1,0 +1,42 @@
+{{ $pag := $.Paginator }}
+{{ $paginationAnchor := "#topofthelist"}}
+{{ if gt $pag.TotalPages 1 -}}
+<div class="flex flex-wrap justify-center">
+        {{ with $pag.First -}}
+        <a class="ba b--black-20 w-auto pa3 mr1 mb2 link tc black-80 {{ if not $pag.HasPrev }} dn{{ end }}" href="{{ .URL }}{{ $paginationAnchor }}" rel="prev">
+          <i class="fas fa-chevron-left"></i><i class="fas fa-chevron-left"></i>
+        </a>
+        {{ end -}}
+        <a class="ba b--black-20 w-auto pa3 mr1 mb2 link tc black-80 {{ if not $pag.HasPrev }} dn{{ end }}" {{ if $pag.HasPrev }}href="{{ $pag.Prev.URL }}{{ $paginationAnchor }}"{{ end }} rel="prev">
+            <i class="fas fa-chevron-left"></i>
+        </a>
+        {{- $ellipsed := false -}}
+        {{- $shouldEllipse := false -}}
+        {{- range $pag.Pagers -}}
+        {{- $right := sub .TotalPages .PageNumber -}}
+        {{- $showNumber := or (le .PageNumber 3) (eq $right 0) -}}
+        {{- $showNumber := or $showNumber (le .TotalPages 5) -}}{{/* Issue #7523 */}}
+        {{- $showNumber := or $showNumber (and (gt .PageNumber (sub $pag.PageNumber 2)) (lt .PageNumber (add $pag.PageNumber 2))) -}}
+        {{- if $showNumber -}}
+          {{- $ellipsed = false -}}
+          {{- $shouldEllipse = false -}}
+        {{- else -}}
+          {{- $shouldEllipse = not $ellipsed -}}
+          {{- $ellipsed = true -}}
+        {{- end -}}
+        {{- if $showNumber }}
+        <a class="ba b--black-20 w-auto pa3 mr1 mb2 link tc black-80 {{ if eq . $pag }} bg-lightest-blue{{ end }}" href="{{ .URL }}{{ $paginationAnchor }}">{{ .PageNumber }}</a>
+        {{- else if $shouldEllipse }}
+        <div class="ba b--black-20 w-auto pa3 mr1 mb2 ink tc black-80">&nbsp;&hellip;&nbsp;</div>
+        {{- end -}}
+        {{- end }}
+        <a class="ba b--black-20 w-auto pa3 mr1 mb2 link tc black-80 {{ if not $pag.HasNext }} dn{{ end }}" {{ if $pag.HasNext }}href="{{ $pag.Next.URL }}{{ $paginationAnchor }}"{{ end }} rel="next">
+            <i class="fas fa-chevron-right"></i>
+        </a>
+        {{- with $pag.Last }}
+        <a class="ba b--black-20 w-auto pa3 mb2 link tc black-80 {{ if not $pag.HasNext }} dn{{ end }}" href="{{ .URL }}{{ $paginationAnchor }}" rel="next">
+            <i class="fas fa-chevron-right"></i><i class="fas fa-chevron-right"></i>
+        </a>
+        {{- end }}
+</div>
+{{ end }}
