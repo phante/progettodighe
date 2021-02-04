@@ -54,11 +54,14 @@
 
             <p class="f3 tracked ttu lh-title">Articoli di questa rubrica</p>
             <div class="cf" id="topofthelist">
-                {{ range (.Paginator 16).Pages }}
+                {{ range (.Paginator 16).Pages.ByTitle }}
                 <article class="fl w-100 w-50-m w-25-ns pa3-ns mb4">
                     <a class="link dt w-100 bb b--black-10 pb2 mt2 dim blue" href="{{ .RelPermalink }}">
                         <div class="aspect-ratio aspect-ratio--1x1">
-                            <img style="background-image:url([(#LOGO_ARTICLE_RUBRIQUE|extraire_attribut{src}|url_absolue)]);" class="db bg-center cover aspect-ratio--object br4">
+                            {{ with .Resources.GetMatch "logo.jpg" }}
+                            {{ $logo := .Fill "300x300" }}
+                            <img style="background-image:url({{ $logo.RelPermalink }});" class="db bg-center cover aspect-ratio--object br4">
+                            {{ end }}
                         </div>
                         <h2 class="f4 tracked-tight lh-title black-80">{{ .Title }}</h2>
                         <time class="f5 fw4 mt2 black-60" datetime={{ .Lastmod.Format "2006-01-02T15:04:05Z07:00" | safeHTML }}>
@@ -75,12 +78,19 @@
 {{ end }}
 
 {{ define "footer_scripts" }}
-<script type="text/javascript" src={{ "/asset/js/autoComplete.min.js" | relURL }}></script>
+<script type="text/javascript" src={{ "/asset/js/autoComplete.min.js" | relURL}}></script>
 {{ with $js := resources.Get "asset/js/list.js" -}}
 {{ $localStorageName := $.Title | urlize -}}
 {{ $jsonFile := $.OutputFormats.Get "json" -}}
 {{ $dataSource := $jsonFile.RelPermalink -}}
-{{ $js := . | js.Build (dict "minify" true "params" (dict "DataSource" $dataSource "LocalStorageName" $localStorageName "Title" $.Title )) -}}
+<script>
+var autocompleteParams = {
+    Title: {{ $.Title }},
+    LocalStorageName: {{ $localStorageName }},
+    DataSource: {{ $dataSource }}
+}  
+</script>
+{{ $js := . | js.Build (dict "minify" true ) -}}
 <script type="text/javascript" src={{ $js.RelPermalink }}></script>
 {{ end -}}
 {{ end }}
