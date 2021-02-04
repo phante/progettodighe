@@ -30,8 +30,7 @@
     {{ template "_internal/opengraph.html" . -}}
     {{ template "_internal/schema.html" . -}}
     {{ template "_internal/twitter_cards.html" . -}}
-
-    {{ if eq (getenv "HUGO_ENV") "production" | or (eq .Site.Params.env "production")  }}
+    {{ if hugo.IsProduction }}
     <link rel="preconnect" href="https://www.google-analytics.com">
     <link rel="preconnect" href="https://tpc.googlesyndication.com">
     <link rel="preconnect" href="https://pagead2.googlesyndication.com">
