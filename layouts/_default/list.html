@@ -1,8 +1,8 @@
 {{ define "head_addon" }}
-{{ with resources.Get "/asset/css/autoComplete.css" }}
-{{ $style := . | minify | fingerprint }}
-<link rel="stylesheet" href={{ $style.RelPermalink }}>
-{{ end }}
+    {{- with resources.Get "/asset/css/autoComplete.css" -}}
+    {{ $style := . | minify | fingerprint -}}
+    <link rel="stylesheet" href={{ $style.RelPermalink }}>
+    {{ end -}}
 {{ end }}
 
 {{ define "main" }}
@@ -75,5 +75,6 @@
 {{ end }}
 
 {{ define "footer_scripts" }}
+<script type="text/javascript" src={{ "/asset/js/autoComplete.min.js" | relURL }}></script>
 {{- partial "autocomplete.html" . -}}
 {{ end }}

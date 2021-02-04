@@ -16,21 +16,20 @@
     <link rel="{{ .Rel }}" type="{{ .MediaType.Type }}" href="{{ .Permalink | safeURL }}">
     {{ end -}}
 
-    {{ with resources.Get "/asset/css/tachyons.css" }}
+    {{ with resources.Get "/asset/css/tachyons.css" -}}
     {{ $style := . | minify | fingerprint }}
     <link rel="stylesheet" href={{ $style.RelPermalink }}>
-    {{ end }}
+    {{ end -}}
+    {{- block "head_addon" . }}{{ end -}}
 
-    {{ block "head_addon" . }}{{ end }}
+    {{ with resources.Get "/asset/fa/js/all.js" -}}
+    {{ $js := . | js.Build (dict "minify" true) | fingerprint }}
+    <script defer src={{ $js.RelPermalink }}></script>
+    {{ end -}}
 
-    {{ with resources.Get "/asset/fa/js/all.js" }}
-    {{ $fontAwesomeJS := . | minify | fingerprint }}
-    <script defer src={{ $fontAwesomeJS.RelPermalink }}></script>
-    {{ end }}
-
-    {{- template "_internal/opengraph.html" . -}}
-    {{- template "_internal/schema.html" . -}}
-    {{- template "_internal/twitter_cards.html" . -}}
+    {{ template "_internal/opengraph.html" . -}}
+    {{ template "_internal/schema.html" . -}}
+    {{ template "_internal/twitter_cards.html" . -}}
 
     {{ if eq (getenv "HUGO_ENV") "production" | or (eq .Site.Params.env "production")  }}
     <link rel="preconnect" href="https://www.google-analytics.com">
