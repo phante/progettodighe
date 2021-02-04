@@ -76,5 +76,11 @@
 
 {{ define "footer_scripts" }}
 <script type="text/javascript" src={{ "/asset/js/autoComplete.min.js" | relURL }}></script>
-{{- partial "autocomplete.html" . -}}
+{{ with $js := resources.Get "asset/js/list.js" -}}
+{{ $localStorageName := $.Title | urlize -}}
+{{ $jsonFile := $.OutputFormats.Get "json" -}}
+{{ $dataSource := $jsonFile.RelPermalink -}}
+{{ $js := . | js.Build (dict "minify" true "params" (dict "DataSource" $dataSource "LocalStorageName" $localStorageName "Title" $.Title )) -}}
+<script type="text/javascript" src={{ $js.RelPermalink }}></script>
+{{ end -}}
 {{ end }}
