@@ -1,58 +1,82 @@
 <script type="text/javascript" src="/main/asset/js/autoComplete.js"></script>
 
 <script type="text/javascript">
-    //https://tarekraafat.github.io/autoComplete.js
-
+    // https://tarekraafat.github.io/autoComplete.js
     // The autoComplete.js Engine instance creator
-    const autoCompletejs = new autoComplete({
+    {{ $localStorageName := .Title | urlize }}
+    const autoCompleteJS = new autoComplete({
+        name: "{{- .Title -}}",
+        selector: "#autoComplete",
+        observer: false,
         data: {
             src: async function () {
                 // Loading placeholder text
                 document.querySelector("#autoComplete").setAttribute("placeholder", "Loading...");
-                // Fetch External Data Source                    
-                const source = await fetch("/main/dighe/index.json");
-                const data = await source.json();
-                console.log("Caricati i dati");
+
+                if (!JSON.parse(localStorage.getItem("{{- $localStorageName -}}"))) {
+                    // Fetch External Data Source
+                    {{ with .OutputFormats.Get "json" -}}
+                    const source = await fetch({{- .RelPermalink -}});
+                    {{- end }}
+                    const data = await source.json();
+                    // Saves the fetched data into local storage
+                    localStorage.setItem("{{- $localStorageName -}}", JSON.stringify(data));
+                    // Retrieve the cached data from local storage
+                    const localData = JSON.parse(localStorage.getItem("{{- $localStorageName -}}"));
+                    // Post Loading placeholder text
+                    document.querySelector("#autoComplete").setAttribute("placeholder", autoCompleteJS.placeHolder);
+                    // Returns Fetched data
+                    return localData;
+                }
+
+                // Post Loading placeholder text
+                document.querySelector("#autoComplete").setAttribute("placeholder", autoCompleteJS.placeHolder);
+
                 // Returns Fetched data
-                return data;
+                return JSON.parse(localStorage.getItem("{{- $localStorageName -}}"));
             },
-            key: ["title"]
+            key: ["name"]
         },
+        searchEngine: "loose",
+        placeHolder: "{{ .Title }}",
         sort: (a, b) => {
             if (a.match < b.match) return -1;
             if (a.match > b.match) return 1;
             return 0;
         },
-        placeHolder: "{{ .Title }}",
-        selector: "#autoComplete",
-        searchEngine: "loose",
         resultsList: {
-            render: true,
+          render: true,
             container: source => {
                 source.setAttribute("id", "article_list");
-                source.setAttribute("class", "list pl1 measure center");
+                //source.setAttribute("class", "list pl1 measure center");
             },
-            destination: document.querySelector("#autoCompleteResult"),
+            destination: "#autoCompleteResult",
             position: "afterbegin",
             element: "div"
         },
         resultItem: {
-            content: (data, source) => {
-                source.setAttribute("class", "lh-copy pv2 ba bl-0 bt-0 br-0 b--dotted b--black-30 f5 f4-ns link black-80 dim");
-                source.innerHTML = data.value[data.key];
+            content: (data, element) => {
+                console.log("Dentro resultItem-content");
+                element.setAttribute("class", "lh-copy pv2 ba bl-0 bt-0 br-0 b--dotted b--black-30 f5 f4-ns link black-80 dim");
+                element.innerHTML = data.value[data.key];
             },
             element: "div"
         },
         onSelection: function (feedback) {
-            document.querySelector("#autoComplete").blur();
-            window.location = feedback.selection.value.id;
+            var elem = document.querySelector("#autoComplete");
+            elem.blur();
+            elem.value = "";
+            window.location = feedback.selection.value.url;
         },
-        noResults:() => {
-                const result = document.createElement("div");
-                result.setAttribute("class", "lh-copy pv2 ba bl-0 bt-0 br-0 b--dotted b--black-30 f5 f4-ns link black-80 dim");
-                result.setAttribute("tabindex", "1");
-                result.innerHTML = "Nessun risultato";
-                document.querySelector("#article_list").appendChild(result);
+        noResults: (dataFeedback, generateList) => {
+            // Generate autoComplete List 
+            generateList(autoCompleteJS, dataFeedback, dataFeedback.results);
+            // No Results List Item
+            const result = document.createElement("div");
+            result.setAttribute("class", "lh-copy pv2 ba bl-0 bt-0 br-0 b--dotted b--black-30 f5 f4-ns link black-80 dim");
+            result.setAttribute("tabindex", "1");
+            result.innerHTML = "Nessun risultato";
+            document.querySelector("#article_list").appendChild(result);
         }
     });
 </script>

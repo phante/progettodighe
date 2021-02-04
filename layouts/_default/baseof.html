@@ -12,12 +12,16 @@
     <link rel="icon" type="image/png" sizes="16x16" href={{ "/asset/icon/favicon-16x16.png" | relURL }} >
     <link rel="manifest" href={{ "/asset/icon/site.webmanifest" | relURL }} >
 
+    {{ range .AlternativeOutputFormats -}}
+    <link rel="{{ .Rel }}" type="{{ .MediaType.Type }}" href="{{ .Permalink | safeURL }}">
+    {{ end -}}
+
     {{ with resources.Get "/asset/css/tachyons.css" }}
     {{ $style := . | minify | fingerprint }}
     <link rel="stylesheet" href={{ $style.RelPermalink }}>
     {{ end }}
 
-    {{ block "header_css" . }}{{ end }}
+    {{ block "head_addon" . }}{{ end }}
 
     {{ with resources.Get "/asset/fa/js/all.js" }}
     {{ $fontAwesomeJS := . | minify | fingerprint }}
@@ -27,10 +31,6 @@
     {{- template "_internal/opengraph.html" . -}}
     {{- template "_internal/schema.html" . -}}
     {{- template "_internal/twitter_cards.html" . -}}
-
-    {{ with .OutputFormats.Get "rss" -}}
-    {{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
-    {{ end -}}
 
     {{ if eq (getenv "HUGO_ENV") "production" | or (eq .Site.Params.env "production")  }}
     <link rel="preconnect" href="https://www.google-analytics.com">

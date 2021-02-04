@@ -10,3 +10,8 @@ theme: ananke
 enableGitInfo: true
 enableRobotsTXT: true
 pluralizelisttitles: false
+outputs:
+  section:
+  - html
+  - rss
+  - json

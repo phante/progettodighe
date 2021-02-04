@@ -5,9 +5,6 @@ tags: []
 featured_image: ""
 description: Le monografie sulle grandi dighe italiane ed estere.
 weight: 1
-outputs:
-- html
-- json
 ---
 
 This is the diga list!

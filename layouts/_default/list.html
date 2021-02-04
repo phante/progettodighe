@@ -1,4 +1,4 @@
-{{ define "header_css" }}
+{{ define "head_addon" }}
 {{ with resources.Get "/asset/css/autoComplete.css" }}
 {{ $style := . | minify | fingerprint }}
 <link rel="stylesheet" href={{ $style.RelPermalink }}>
@@ -46,10 +46,9 @@
         <div class="mw8 center">
             <div class="flex flex-wrap">
                 <div class="w-100 w-30-ns pa3">
-                    <input id="autoComplete" type="text" tabindex="1" placeholder="{{ .Title }}">
+                    <input id="autoComplete" type="text" tabindex="1">
                 </div>
-                <div class="w-70 pa3">
-                    <div id="autoCompleteResult"></div>
+                <div id="autoCompleteResult" class="w-70 pa3">
                 </div>
             </div>
 
