@@ -14,6 +14,7 @@ diga:
     altezza:
     lunghezzacoronamento:
     capacitainvaso:
+coords:
     latitudine:
     longitudine:
 ---

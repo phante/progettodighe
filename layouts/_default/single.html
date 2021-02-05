@@ -1,3 +1,10 @@
+{{ define "head_addon" }}
+    {{- with resources.Get "/asset/css/leaflet/leaflet.css" -}}
+    {{ $style := . | minify | fingerprint -}}
+    <link rel="stylesheet" href={{ $style.RelPermalink }}>
+    {{ end -}}
+{{ end }}
+
 {{ define "main" }}
 <section class="w-100">
     <header class="ph3 ph5-ns pv2">
@@ -64,7 +71,11 @@
             <div class="f5 f4-ns cf lh-copy">
                 {{ with .Params.diga -}}
                     {{ partial "diga.html" . -}}
-                {{ end }}
+                {{ end -}}
+                {{ with .Params.coords -}}
+                    {{ partial "mappa.html" . -}}
+                {{ end -}}
+                <div id="mapid"></div>
                 {{ .Content }}
             </div>
         </div>

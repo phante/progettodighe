@@ -1,0 +1,16 @@
+<script type="text/javascript" src={{ "/asset/js/leaflet/leaflet.js" | relURL}}></script>
+<div id="mapid" style="height: 180px;"></div>
+<script>
+    var coords = [{{ .latitudine }}, {{ .longitudine }}];
+    var mymap = L.map('mapid').setView(coords, 13);
+
+    accessToken = "pk.eyJ1IjoicGhhbnRlIiwiYSI6ImNra3NxcTVjNzBoNTEyb3BiOGprcGZmOGoifQ.wOzubWow0HmcUsuK5wG3Yg";
+    L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token='+accessToken, {
+    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+    maxZoom: 18,
+    id: 'mapbox/streets-v11',
+    tileSize: 512,
+    zoomOffset: -1,
+    accessToken: 'your.mapbox.access.token'
+}).addTo(mymap);
+</script>
