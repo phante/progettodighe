@@ -31,22 +31,22 @@
                             {{- end -}}
                         </div>
                         {{ end -}}
-
                         <!-- div class="pa2">
                             <i class="fas fa-at"></i> <BOUCLE_autori(AUTEURS){id_article}{" | "}><a class="black-80" href="#URL_AUTEUR">#NOM</a></BOUCLE_autori>
                         </div -->
-
                         <!-- div class="pa2">
                             <i class="fas fa-link"></i> <a class="black-80" href="(#URL_SITE)">[(#NOM_SITE|sinon{[(#URL_SITE|couper{80})]})]</a>
                         </div -->
-                    
                         <div class="pa2">
                             <p class="f6 black-50 tracked">pubblicato il <time class="f5 fw4 mt2 black-60" datetime={{ .Date.Format "2006-01-02T15:04:05Z07:00" | safeHTML }}>
                                 {{ humanize (index $.Site.Data.mesi (printf "%d" .Date.Month)) }} {{ .Date.Year }}
                             </time>
+                            {{ if or (ne .Date.Month .Lastmod.Month) (ne .Date.Year .Lastmod.Year) -}}
                             &mdash; modificato il <time class="f5 fw4 mt2 black-60" datetime={{ .Lastmod.Format "2006-01-02T15:04:05Z07:00" | safeHTML }}>
                                 {{ humanize (index $.Site.Data.mesi (printf "%d" .Lastmod.Month)) }} {{ .Lastmod.Year }}
-                            </time></p>
+                            </time>
+                            {{ end -}}
+                            </p>
                         </div>
                     </div>
                 </div>
