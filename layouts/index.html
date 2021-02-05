@@ -11,23 +11,26 @@
   <div class="ph3 ph5-ns pv4 pv5-ns mw8 center">
     <p class="f3 tracked ttu lh-title">Gli ultimi articoli pubblicati</p>
 
-    {{ range first 10 .Site.RegularPages.ByLastmod.Reverse }}
+    {{ range first 10 .Site.RegularPages.ByLastmod.Reverse -}}
     <article class="bb pb3">
-      <h1 class="f3 ttu lh-title"><a class="link black-80" href="{{ .Permalink }}">{{ .Title }}</a></h1>
-      <p>Tempo di lettura {{ .ReadingTime }} minut{{ if eq .ReadingTime 1 }}o{{else}}i{{ end }}</p>
-
-      {{ with .Resources.GetMatch "logo.jpg" }}
-      <div class="aspect-ratio aspect-ratio--16x9 mb4">
-        <a class="link black-80" href="{{ .RelPermalink }}">
-          <div class="aspect-ratio--object cover br4" style="background:url({{ .RelPermalink }}) center;"></div>
-        </a>
-      </div>  
-      {{ end }}
-
-      <p class="f5 f4-ns lh-copy">{{ .Summary }}</p>
-      <a class="link black-80" href="{{ .Permalink }}">(continua) <i class="fas fa-arrow-alt-circle-right"></i></a>
+        <h1 class="f3 ttu lh-title"><a class="link black-80" href="{{ .RelPermalink }}">{{ .Title }}</a></h1>
+        <p>Tempo di lettura {{ .ReadingTime }} minut{{ if eq .ReadingTime 1 }}o{{else}}i{{ end }}</p>
+        {{ $article := .}}
+        {{ with .Resources.GetMatch "logo.jpg" -}}
+        <div class="aspect-ratio aspect-ratio--16x9 mb4">
+            <a class="link black-80" href="{{ $article.RelPermalink }}">
+                <div class="aspect-ratio--object cover br4" style="background:url({{ .RelPermalink }}) center;"></div>
+            </a>
+        </div>
+        {{ end -}}
+        <div class="f5 f4-ns lh-copy">
+            {{ .Summary }}
+            <div class="mt3">
+                <a class="link black-80" href="{{ .Permalink }}">(continua) <i class="fas fa-arrow-alt-circle-right"></i></a>
+            </diV>
+        </div>
     </article>
-    {{ end }}
+    {{ end -}}
   </div> 
 </section>
 {{ end }}

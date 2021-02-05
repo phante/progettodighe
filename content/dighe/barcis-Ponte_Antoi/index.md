@@ -1,8 +1,10 @@
 ---
-title: "Barcis Ponte_Antoi"
-date: 2021-02-03T18:14:03+01:00
+title: "Barcis Ponte Antoi"
+date: 2021-02-05T19:35:39+01:00
 draft: true
-alias: "/le-dighe/article/Barcis Ponte_Antoi"
+images:
+categories:
+tags:
 keywords: 
     - diga
 condizione: ""

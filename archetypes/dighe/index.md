@@ -1,17 +1,21 @@
 ---
-title: "{{ replace .Name "-" " " | title }}"
+title: "{{ .Name | humanize | title }}"
 date: {{ .Date }}
 draft: true
-alias: "/le-dighe/article/{{ replace .Name "-" " " | title }}"
-keywords: 
-    - diga
-condizione: ""
-uso: ""
-tipologia: ""
-anni: ""
-altezza: ""
-lunghezzacoronamento: ""
-capacitàinvaso: ""
+images:
+categories:
+tags:
+keywords:
+diga:
+    - condizione:
+    - uso:
+    - tipologia:
+    - anno:
+    - altezza:
+    - lunghezzacoronamento:
+    - capacitainvaso:
+    - latitudine:
+    - longitudine:
 ---
 
 Descrizione generale dell'impianto, _posizione geografica_, **elementi storici** o

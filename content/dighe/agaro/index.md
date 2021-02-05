@@ -3,21 +3,31 @@ title: "Agaro"
 date: 2021-01-30T16:09:01+01:00
 draft: true
 alias: "/le-dighe/article/Agaro"
+images:
+categories:
+    - diga_categoria
+tags:
+    - diga_tags
 keywords: 
-    - diga
-    - digottosa
-condizione: "Esercizio normale"
-uso: "Idroelettrico"
-tipologia: "Gravità ordinaria in muratura di pietrame"
-anni: "1940"
-altezza: "57.6"
-lunghezzacoronamento: "243"
-capacitàinvaso: "18.75"
+    - diga_keyword
+diga:
+    - condizione: "Esercizio normale"
+    - uso: "Idroelettrico"
+    - tipologia: "Gravità ordinaria in muratura di pietrame"
+    - anni: "1940"
+    - altezza: "57.6"
+    - lunghezzacoronamento: "243"
+    - capacitàinvaso: "18.75"
+    - latitudine:
+    - longitudine:
 ---
 
 La diga di Agaro si trova in Ossola, presso una conca glaciale in val d’Agaro, affluente sinistro del torrente Devero. E’ stata costruita dall’Edison nel periodo dal 1936 al 1940 dagli ingegneri Claudio Marcello e Pietro Marinoni. 
 Nel punto più profondo delle fondazioni, è alta 56.70 m mentre il coronamento è lungo 243 m. La diga ha un volume di 149.500 m&#x00B3;. La diga di Agaro è a gravità massiccia in muratura, con andamento planimetrico leggermente arcuato, con un raggio di 225 m.
 La struttura è in blocchi di granito uniti da malta cementizia, fondati su una platea di calcestruzzo.
+
+<!--more-->
+
 Il paramento di monte è in pietra unita da cemento extra - fine mentre il paramento di valle è in muratura. 
 Al suo interno la diga è attraversata da tre cunicoli, a cui corrispondono due serie di tubi di drenaggio del diametro di 0.20 e 0.60 m.  I giunti di dilatazione sono disposti per tutta la lunghezza della diga ad una distanza costante di 16 m.
 Il pietrame è stato preso in loco, mentre parte della sabbia per la malta cementizia è stata presa dal greto del fiume Toce nei pressi di Crego e trasportata alla diga attraverso una teleferica lunga 6 Km

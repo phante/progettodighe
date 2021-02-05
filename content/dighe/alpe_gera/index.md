@@ -1,8 +1,11 @@
 ---
-title: "Alpe_gera"
-date: 2021-02-03T18:13:21+01:00
+title: "Alpe Gera"
+date: 2021-02-05T19:29:00+01:00
 draft: true
 alias: "/le-dighe/article/Alpe_gera"
+images:
+categories:
+tags:
 keywords: 
     - diga
 condizione: ""

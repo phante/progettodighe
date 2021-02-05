@@ -1,8 +1,10 @@
 ---
-title: "Barcis Del_cellina"
-date: 2021-02-03T18:14:13+01:00
+title: "Barcis Del Cellina"
+date: 2021-02-05T19:35:36+01:00
 draft: true
-alias: "/le-dighe/article/Barcis Del_cellina"
+images:
+categories:
+tags:
 keywords: 
     - diga
 condizione: ""
