@@ -7,15 +7,15 @@ categories:
 tags:
 keywords:
 diga:
-    - condizione:
-    - uso:
-    - tipologia:
-    - anno:
-    - altezza:
-    - lunghezzacoronamento:
-    - capacitainvaso:
-    - latitudine:
-    - longitudine:
+    condizione:
+    uso:
+    tipologia:
+    anno:
+    altezza:
+    lunghezzacoronamento:
+    capacitainvaso:
+    latitudine:
+    longitudine:
 ---
 
 Descrizione generale dell'impianto, _posizione geografica_, **elementi storici** o

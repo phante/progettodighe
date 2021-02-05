@@ -1,0 +1,44 @@
+<div class="cf">
+    {{ with .condizione -}}
+    <dl class="fl fn-l w-50 dib-l w-auto-l lh-title mr5-l">
+        <dd class="f6 fw4 ml0">Condizione</dd>
+        <dd class="f3 fw6 ml0">{{ . }}</dd>
+    </dl>
+    {{ end -}}
+    {{ with .uso -}}
+    <dl class="fl fn-l w-50 dib-l w-auto-l lh-title mr5-l">
+        <dd class="f6 fw4 ml0">Uso</dd>
+        <dd class="f3 fw6 ml0">{{ . }}</dd>
+    </dl>
+    {{ end -}}
+    {{ with .tipologia -}}
+    <dl class="fl fn-l w-50 dib-l w-auto-l lh-title mr5-l">
+        <dd class="f6 fw4 ml0">Tipologia dello sbarramento</dd>
+        <dd class="f3 fw6 ml0">{{ . }}</dd>
+    </dl>
+    {{ end -}}
+    {{ with .anni -}}
+    <dl class="fl fn-l w-50 dib-l w-auto-l lh-title mr5-l">
+        <dd class="f6 fw4 ml0">Anni di costruzione</dd>
+        <dd class="f3 fw6 ml0">{{ . }}</dd>
+    </dl>
+    {{ end -}}
+    {{ with .altezza -}}
+    <dl class="fl fn-l w-50 dib-l w-auto-l lh-title mr5-l">
+        <dd class="f6 fw4 ml0">Altezza dello sbarramento [m]</dd>
+        <dd class="f3 fw6 ml0">{{ . }}</dd>
+    </dl>
+    {{ end -}}
+    {{ with .lunghezzacoronamento -}}
+    <dl class="fl fn-l w-50 dib-l w-auto-l lh-title mr5-l">
+        <dd class="f6 fw4 ml0">Lunghezza del coronamento [m]</dd>
+        <dd class="f3 fw6 ml0">{{ . }}</dd>
+    </dl>
+    {{ end -}}
+    {{ with .capacitainvaso -}}
+    <dl class="fl fn-l w-50 dib-l w-auto-l lh-title mr5-l">
+        <dd class="f6 fw4 ml0">Capacità invaso [milioni di metri cubi]</dd>
+        <dd class="f3 fw6 ml0">{{ . }}</dd>
+    </dl>
+    {{ end -}}
+</div>

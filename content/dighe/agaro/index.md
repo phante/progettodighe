@@ -11,15 +11,15 @@ tags:
 keywords: 
     - diga_keyword
 diga:
-    - condizione: "Esercizio normale"
-    - uso: "Idroelettrico"
-    - tipologia: "Gravità ordinaria in muratura di pietrame"
-    - anni: "1940"
-    - altezza: "57.6"
-    - lunghezzacoronamento: "243"
-    - capacitàinvaso: "18.75"
-    - latitudine:
-    - longitudine:
+    condizione: "Esercizio normale"
+    uso: "Idroelettrico"
+    tipologia: "Gravità ordinaria in muratura di pietrame"
+    anni: "1940"
+    altezza: "57.6"
+    lunghezzacoronamento: "243"
+    capacitainvaso: "18.75"
+    latitudine:
+    longitudine:
 ---
 
 La diga di Agaro si trova in Ossola, presso una conca glaciale in val d’Agaro, affluente sinistro del torrente Devero. E’ stata costruita dall’Edison nel periodo dal 1936 al 1940 dagli ingegneri Claudio Marcello e Pietro Marinoni. 
