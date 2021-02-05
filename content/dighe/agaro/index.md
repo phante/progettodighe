@@ -5,6 +5,7 @@ draft: true
 alias: "/le-dighe/article/Agaro"
 keywords: 
     - diga
+    - digottosa
 condizione: "Esercizio normale"
 uso: "Idroelettrico"
 tipologia: "Gravità ordinaria in muratura di pietrame"

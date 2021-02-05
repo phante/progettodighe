@@ -1,9 +1,7 @@
-import * as params from '@params';
-
 // https://tarekraafat.github.io/autoComplete.js
 // The autoComplete.js Engine instance creator
 const autoCompleteJS = new autoComplete({
-  name: params.Title,
+  name: autocompleteParams.Title,
   selector: "#autoComplete",
   observer: false,
   data: {
@@ -13,15 +11,15 @@ const autoCompleteJS = new autoComplete({
         .querySelector("#autoComplete")
         .setAttribute("placeholder", "Loading...");
 
-      if (!JSON.parse(localStorage.getItem(params.LocalStorageName))) {
+      if (!JSON.parse(localStorage.getItem(autocompleteParams.LocalStorageName))) {
         // Fetch External Data Source
-        const source = await fetch(params.DataSource);
+        const source = await fetch(autocompleteParams.DataSource);
         const data = await source.json();
         // Saves the fetched data into local storage
-        localStorage.setItem(params.LocalStorageName, JSON.stringify(data));
+        localStorage.setItem(autocompleteParams.LocalStorageName, JSON.stringify(data));
         // Retrieve the cached data from local storage
         const localData = JSON.parse(
-          localStorage.getItem(params.LocalStorageName)
+          localStorage.getItem(autocompleteParams.LocalStorageName)
         );
         // Post Loading placeholder text
         document
@@ -37,12 +35,12 @@ const autoCompleteJS = new autoComplete({
         .setAttribute("placeholder", autoCompleteJS.placeHolder);
 
       // Returns Fetched data
-      return JSON.parse(localStorage.getItem(params.LocalStorageName));
+      return JSON.parse(localStorage.getItem(autocompleteParams.LocalStorageName));
     },
     key: ["name"],
   },
   searchEngine: "loose",
-  placeHolder: params.Title,
+  placeHolder: autocompleteParams.Title,
   sort: (a, b) => {
     if (a.match < b.match) return -1;
     if (a.match > b.match) return 1;

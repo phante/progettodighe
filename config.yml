@@ -4,6 +4,7 @@ params:
   webmaster: "Elvis Del Tedesco"
   webmasterMail: "info@progettodighe.it"
   description: Il punto di riferimento per gli appassionati di dighe, centrali idroelettriche e opere idrauliche.
+disqusShortname: progettodighe
 defaultContentLanguage: it
 languageCode: it-it
 theme: ananke
