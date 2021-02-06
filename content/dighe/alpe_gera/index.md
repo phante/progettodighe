@@ -2,19 +2,23 @@
 title: "Alpe Gera"
 date: 2021-02-05T19:29:00+01:00
 draft: true
-alias: "/le-dighe/article/Alpe_gera"
 images:
+resources:
 categories:
 tags:
-keywords: 
-    - diga
-condizione: ""
-uso: ""
-tipologia: ""
-anni: ""
-altezza: ""
-lunghezzacoronamento: ""
-capacitàinvaso: ""
+  - diga_tags
+keywords:
+diga:
+    condizione:
+    uso:
+    tipologia:
+    anno:
+    altezza:
+    lunghezzacoronamento:
+    capacitainvaso:
+coords:
+    latitudine:
+    longitudine:
 ---
 
 Descrizione generale dell'impianto, _posizione geografica_, **elementi storici** o

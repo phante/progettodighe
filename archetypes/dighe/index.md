@@ -3,6 +3,7 @@ title: "{{ .Name | humanize | title }}"
 date: {{ .Date }}
 draft: true
 images:
+resources:
 categories:
 tags:
 keywords:

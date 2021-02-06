@@ -1,0 +1,48 @@
+
+{{ define "main" }}
+<header class="w-100 ph3 ph5-ns pv2">
+    <div class="mw8 center">
+        <h1 class="f3 tracked ttu lh-title">Pagine che usano il tag <i class="fas fa-hashtag"></i>{{ .Title }}</h1>
+    </div>
+</header>
+
+<section class="w-100">
+    <div class="ph3 ph5-ns pv4 pv5-ns">
+       <div class="mw8 center">
+        {{ range (.Paginator 1).Pages.ByTitle -}}
+        <article>
+            <a class="link dt w-100 bb b--black-10 pb2 mt2 dim blue" href={{- .Permalink -}}>
+                <div class="dtc w3">
+                    <div class="aspect-ratio aspect-ratio--1x1 mb4">
+                        {{ $scratch := newScratch -}}
+                        {{ $squareSize := "300x300" -}}
+                        {{ if .Resources.Match "logo*" -}}
+                            {{ with .Resources.GetMatch "logo*.jpg" -}}
+                                {{ $scratch.Set "headerImage" . -}}
+                            {{ end -}}
+                        {{- else -}}
+                            {{ range first 1 (.Resources.ByType "image") -}}
+                                {{ $scratch.Set "headerImage" . -}}
+                            {{ end -}}
+                        {{ end -}}
+                        {{- with $scratch.Get "headerImage" -}}
+                        {{ $image := ($scratch.Get "headerImage").Fill $squareSize }}
+                        <div class="aspect-ratio--object cover br4" style="background:url({{ $image.Permalink }}) center;"></div>
+                        {{- end -}}
+                    </div>
+                </div>
+                <div class="dtc v-top pl2">
+                    <h1 class="f6 f5-ns fw6 lh-title black mv0 ttu tracked">{{ .Title }} - {{ humanize .Section }}</h1>
+                    <h2 class="f6 fw4 mt2 mb0 black-60 lh-copy">{{ .Summary  }}</h2>
+                </div>
+            </a>
+        </article>
+        {{ end -}}
+        </div>
+        <div class="mw8 mt4 center">
+            {{- partial "pagination.html" . -}}
+        </div>
+    </div>
+ </section>
+{{ end }}
+

@@ -24,20 +24,20 @@
     <link rel="preconnect" href="https://www.google-analytics.com">
     <link rel="preconnect" href="https://tpc.googlesyndication.com">
     <link rel="preconnect" href="https://pagead2.googlesyndication.com">
-    {{ partial "gtag.html" . }}
-    {{ partial "cookie.html" . }}
-    {{ partial "hotjar.html" . }}
+    {{ partialCached "gtag.html" . }}
+    {{ partialCached "cookie.html" . }}
+    {{ partialCached "hotjar.html" . }}
     <script data-ad-client="ca-pub-8950289255447363" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     {{ end }}
 </head>
 <body class="w100 sans-serif bg-white black-80">
-    {{ block "header" . }}{{ partial "navigation.html" .}}{{ end }}
+    {{ block "header" . }}{{ partialCached "navigation.html" .}}{{ end }}
 
     <main class="pb3">
     {{ block "main" . }}{{ end }}
     </main>
 
-    {{ block "footer" . }}{{ partial "footer.html" . }}{{ end }}
+    {{ block "footer" . }}{{ partialCached "footer.html" . }}{{ end }}
     {{ block "footer_scripts" . }}{{ end }}
 </body>
 </html>

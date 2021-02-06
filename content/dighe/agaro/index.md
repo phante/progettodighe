@@ -20,6 +20,7 @@ categories:
   - diga_categoria
 tags:
   - diga_tags
+  - taggo_bello
 keywords:
   - diga_keyworda
 diga:
