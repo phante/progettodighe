@@ -9,7 +9,7 @@ categories:
 tags:
     - diga_tags
 keywords: 
-    - diga_keyword
+    - diga_keyworda
 diga:
     condizione: "Esercizio normale"
     uso: "Idroelettrico"

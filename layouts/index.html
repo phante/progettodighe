@@ -17,13 +17,15 @@
 {{ end }}
 
 {{ define "main" }}
+{{ with .Content }}
 <section class="bg-lightest-blue w-100">
   <article class="ph3 ph5-ns pv4 pv5-ns f4 mw8 center lh-copy">
     <div class="measure">
-      {{ .Content }}
+      {{ . }}
     </div>
   </article>
 </section>
+{{ end }}
 
 <section class="w-100">
   <div class="ph3 ph5-ns pv4 pv5-ns mw8 center">
@@ -31,13 +33,13 @@
 
     {{ range first 10 .Site.RegularPages.ByLastmod.Reverse -}}
     <article class="bb pb3">
-        <h1 class="f3 ttu lh-title"><a class="link black-80" href="{{ .RelPermalink }}">{{ .Title }}</a></h1>
+        <h1 class="f3 ttu lh-title"><a class="link black-80" href="{{ .Permalink }}">{{ .Title }}</a></h1>
         <p>Tempo di lettura {{ .ReadingTime }} minut{{ if eq .ReadingTime 1 }}o{{else}}i{{ end }}</p>
         {{ $article := .}}
         {{ with .Resources.GetMatch "logo.jpg" -}}
         <div class="aspect-ratio aspect-ratio--16x9 mb4">
-            <a class="link black-80" href="{{ $article.RelPermalink }}">
-                <div class="aspect-ratio--object cover br4" style="background:url({{ .RelPermalink }}) center;"></div>
+            <a class="link black-80" href="{{ $article.Permalink }}">
+                <div class="aspect-ratio--object cover br4" style="background:url({{ .Permalink }}) center;"></div>
             </a>
         </div>
         {{ end -}}

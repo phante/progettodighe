@@ -14,7 +14,7 @@
 <!-- meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{if .IsPage}}{{ .Summary }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}{{ end }}" -->    
 {{ hugo.Generator }}
 <!-- Link Tags-->
-<base href="{{ .Permalink }}">
+<base href="{{ .Permalink }}" />
 <link rel="canonical" href="{{ .Permalink }}" itemprop="url" /> 
 <meta name="url" content="{{ .Permalink }}" />
 <meta name="twitter:url" content="{{ .Permalink }}" /> 

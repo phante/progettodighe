@@ -24,40 +24,7 @@
 {{ end }}
 
 {{ define "main" }}
-<section class="w-100">
-    <header class="ph3 ph5-ns pv2">
-        <div class="mw8 center">
-            <h1 class="f3 tracked ttu lh-title">{{ .CurrentSection.Title }}</h1>
-            {{ with .Description }}<p class="f6 tracked ttu lh-title black-50">{{ . }}</p>{{ end }}
-            <div class="flex flex-wrap">
-
-            {{ with .Resources.GetMatch "logo*.jpg" }}
-            {{ if eq .Title "logo_large.jpg"}}
-                {{ $logo := .Fill "880x300" }}
-                <div class="w-100">
-                    <img src={{ $logo.RelPermalink }} class="db w-100 h-auto br4">
-            {{ else }}
-                {{ $logo := .Fill "300x300" }}
-                <div class="w-30 w-20-ns">
-                    <img src={{ $logo.RelPermalink }} class="db w-100 h-auto br4">
-            {{ end }}
-                </div>
-            {{ if eq .Title "logo_large.jpg"}}
-                <div class="w-100">
-            {{ else }}
-                <div class="w-70 w-80-ns">
-            {{ end }}
-                    {{ with $.Content }}
-                    <div class="mt1">
-                        <p class="f5 f4-ns lh-copy tj">{{ . }}</p>
-                    </div>
-                    {{ end }}
-                </div>
-            {{ end }}
-            </div>
-        </div>
-    </header>
-</section>
+{{ partial "main_header.html" . }}
 
 <section class="w-100">
     <div class="ph3 pv2">
