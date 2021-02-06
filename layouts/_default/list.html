@@ -1,4 +1,22 @@
-{{ define "head_addon" }}
+{{ define "custom_meta" }}
+<meta property="og:type" content="website" /> 
+<meta name="author" content="{{ .Site.Params.author }}" />
+<script defer type="application/ld+json">
+  { 
+    "@context": "http://schema.org", 
+    "@type": "WebSite", 
+    "url": "{{ .Permalink }}", 
+    "sameAs": [
+      "{{ .Site.Params.facebook }}", 
+      "{{ .Site.Params.github }}"
+    ], 
+    "name": "{{ .Title }}", 
+    "logo": "https://www.example.com/images/brand/favicon.png" 
+  }
+</script>
+{{ end }}
+
+{{ define "custom_css" }}
     {{- with resources.Get "/asset/css/autoComplete.css" -}}
     {{ $style := . | minify | fingerprint -}}
     <link rel="stylesheet" href={{ $style.RelPermalink }}>

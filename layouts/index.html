@@ -1,3 +1,21 @@
+{{ define "custom_meta" }}
+<meta property="og:type" content="website" /> 
+<meta name="author" content="{{ .Site.Params.author }}" />
+<script defer type="application/ld+json">
+  { 
+    "@context": "http://schema.org", 
+    "@type": "WebSite", 
+    "url": "{{ .Permalink }}", 
+    "sameAs": [
+      "{{ .Site.Params.facebook }}", 
+      "{{ .Site.Params.github }}"
+    ], 
+    "name": "{{ .Title }}", 
+    "logo": "https://www.example.com/images/brand/favicon.png" 
+  }
+</script>
+{{ end }}
+
 {{ define "main" }}
 <section class="bg-lightest-blue w-100">
   <article class="ph3 ph5-ns pv4 pv5-ns f4 mw8 center lh-copy">
