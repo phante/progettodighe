@@ -3,26 +3,41 @@
         <h1 class="f3 tracked ttu lh-title">{{if eq .IsSection false}}<a class="link black-80" href={{ .CurrentSection.RelPermalink }}>{{ .CurrentSection.Title }}</a> - {{ end }}{{ .Title -}}</h1>
         {{ with .Description }}<p class="f6 tracked ttu lh-title black-50">{{ . }}</p>{{ end }}
         <div class="flex flex-wrap">
-            {{ with .Resources.GetMatch "logo*.jpg" }}
-            {{ if eq .Title "logo_large.jpg" }}
-            {{ $logo := .Fill "880x300" }}
-            <div class="w-100">
-                <img src={{ $logo.RelPermalink }} class="db w-100 h-auto br4">
-            </div>
-            {{ else }}
-            {{ $logo := .Fill "300x300" }}
-            <div class="w-30 w-20-ns">
-                <img src={{ $logo.RelPermalink }} class="db w-100 h-auto br4">
-            </div>
+            {{ if .Resources.Match "logo*" -}}
+                {{ with .Resources.GetMatch "logo*.jpg" }}
+                {{ if eq .Name "logo_large.jpg" }}
+                {{ $logo := .Fill "880x300" }}
+                <div class="w-100">
+                    <img src={{ $logo.RelPermalink }} class="db w-100 h-auto br4">
+                </div>
+                {{ else }}
+                {{ $logo := .Fill "300x300" }}
+                <div class="w-30 w-20-ns">
+                    <img src={{ $logo.RelPermalink }} class="db w-100 h-auto br4">
+                </div>
+                {{ end -}}
+                {{ end -}}
+            {{ else -}}
+                {{ range first 1 (.Resources.ByType "image") -}}
+                {{ if ge .Width 880}}
+                {{ $logo := .Fill "880x300" }}
+                <div class="w-100">
+                    <img src={{ $logo.RelPermalink }} class="db w-100 h-auto br4">
+                </div>
+                {{ else }}
+                {{ $logo := .Fill "300x300" }}
+                <div class="w-30 w-20-ns">
+                    <img src={{ $logo.RelPermalink }} class="db w-100 h-auto br4">
+                </div>
+                {{ end -}}
+                {{ end -}}
             {{ end -}}
-            {{ end -}}
+
             <div class="w-70 w-80-ns pa2">
                 <div class="mt1">
                 {{if .IsSection -}}
                     {{ with .Content -}}
-                    <div class="pa2">
-                        <p class="f5 f4-ns lh-copy tj">{{ . }}</p>
-                    </div>
+                    <div class="pa2 f5 f4-ns lh-copy tj">{{ . }}</div>
                     {{ end -}}
                 {{ else }}
                     {{ with .Keywords -}}

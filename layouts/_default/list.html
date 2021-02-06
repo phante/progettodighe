@@ -39,14 +39,21 @@
 
             <p class="f3 tracked ttu lh-title">Articoli di questa rubrica</p>
             <div class="cf" id="topofthelist">
-                {{ range (.Paginator 16).Pages.ByTitle }}
+                {{ range (.Paginator 16).Pages.ByTitle -}}
                 <article class="fl w-100 w-50-m w-25-ns pa3-ns mb4">
                     <a class="link dt w-100 bb b--black-10 pb2 mt2 dim blue" href="{{ .RelPermalink }}">
                         <div class="aspect-ratio aspect-ratio--1x1">
-                            {{ with .Resources.GetMatch "logo.jpg" }}
-                            {{ $logo := .Fill "300x300" }}
-                            <img style="background-image:url({{ $logo.RelPermalink }});" class="db bg-center cover aspect-ratio--object br4">
-                            {{ end }}
+                            {{ if .Resources.Match "logo*" -}}
+                                {{ with .Resources.GetMatch "logo*" -}}
+                                {{ $logo := .Fill "300x300" -}}
+                                <img style="background-image:url({{ $logo.Permalink }});" class="db bg-center cover aspect-ratio--object br4">
+                                {{ end -}}
+                            {{ else -}}
+                                {{ range first 1 (.Resources.ByType "image") -}}
+                                {{ $logo := .Fill "300x300" -}}
+                                <img style="background-image:url({{ $logo.Permalink }});" class="db bg-center cover aspect-ratio--object br4">
+                                {{ end -}}
+                            {{ end -}}
                         </div>
                         <h2 class="f4 tracked-tight lh-title black-80">{{ .Title }}</h2>
                         <time class="f5 fw4 mt2 black-60" datetime={{ .Lastmod.Format "2006-01-02T15:04:05Z07:00" | safeHTML }}>
@@ -54,7 +61,7 @@
                         </time>
                     </a>
                 </article>
-                {{ end }}
+                {{ end -}}
             </div>
             {{- partial "pagination.html" . -}}
         </div>
