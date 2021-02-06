@@ -91,7 +91,11 @@
             {{ with .Resources.ByType "image" -}}
             <h3 class="f3 tracked ttu lh-title">Immagini</h3>
             {{ range . -}}
-            <a data-fslightbox class="link black-80" href={{ .RelPermalink }} rel="img_portfolio" type="{{ .MediaType.Type }}">
+            <a 
+                data-fslightbox class="link black-80"
+                data-caption="{{ .Title }} - {{ with .Params.author }}{{- . -}}{{ end }} - {{ with .Params.copyright }}{{- . -}}{{ end }}"
+                href={{ .Permalink }} 
+                type="{{ .MediaType.Type }}">
                 {{ $image := .Fill "100x100" -}}
                 <img src={{ $image.RelPermalink }} width={{$image.Width}} height={{$image.Height}}>
             </a>
