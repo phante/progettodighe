@@ -9,7 +9,7 @@
 <section class="w-100">
     <div class="ph3 ph5-ns pv4 pv5-ns">
        <div class="mw8 center">
-        {{ range (.Paginator 1).Pages.ByTitle -}}
+        {{ range (.Paginator).Pages.ByTitle -}}
         <article>
             <a class="link dt w-100 bb b--black-10 pb2 mt2 dim blue" href={{- .Permalink -}}>
                 <div class="dtc w3">

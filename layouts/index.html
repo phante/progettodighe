@@ -36,13 +36,28 @@
         <h1 class="f3 ttu lh-title"><a class="link black-80" href="{{ .Permalink }}">{{ .Title }}</a></h1>
         <p>Tempo di lettura {{ .ReadingTime }} minut{{ if eq .ReadingTime 1 }}o{{else}}i{{ end }}</p>
         {{ $article := .}}
-        {{ with .Resources.GetMatch "logo.jpg" -}}
+
+        {{ $scratch := newScratch -}}
+        {{ if .Resources.Match "logo*" -}}
+            {{ with .Resources.GetMatch "logo*.jpg" -}}
+                {{ $scratch.Set "headerImage" . -}}
+            {{ end -}}
+        {{- else -}}
+            {{ range first 1 (.Resources.ByType "image") -}}
+                {{ $scratch.Set "headerImage" . -}}
+            {{ end -}}
+        {{ end -}}
+
+        {{- with $scratch.Get "headerImage" -}}
+        {{ if ge .Width 500}}
         <div class="aspect-ratio aspect-ratio--16x9 mb4">
             <a class="link black-80" href="{{ $article.Permalink }}">
                 <div class="aspect-ratio--object cover br4" style="background:url({{ .Permalink }}) center;"></div>
             </a>
         </div>
-        {{ end -}}
+        {{ end }}
+        {{- end -}}
+
         <div class="f5 f4-ns lh-copy">
             {{ .Summary }}
             <div class="mt3">

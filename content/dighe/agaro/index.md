@@ -6,9 +6,9 @@ alias: "/le-dighe/article/Agaro"
 images:
     - coronamento.jpg
 resources:
-    - src: lago_a_monte_della_diga.jpg
-      name: lago_a_monte_della_diga.jpg
-      title: Il lago, solo visto a monte della diga
+    - src: coronamento.jpg
+      name: logo_large.jpg
+      title: Coronamento della diga
       params:
         author: Uno fico
         copyright: NAAAAA
