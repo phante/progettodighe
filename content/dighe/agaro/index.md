@@ -1,6 +1,6 @@
 ---
 title: "Agaro"
-date: 2021-01-30T16:09:01+01:00
+date: 2011-06-16T16:09:01+01:00
 draft: true
 alias: "/le-dighe/article/Agaro"
 images:
