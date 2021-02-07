@@ -123,17 +123,39 @@
 </section>
 
 <section class="w-100">
-    <article class="ph3 ph5-ns pv2">
+    {{ range .Params.authors }}
+    {{ $name := . }}
+    {{ $author := (print "/noi/autori/" .) }}
+    {{ with $.Site.GetPage $author }}
+    <article id={{ $name }} class="ph3 ph5-ns pv4 pv5-ns mt2 bg-light-gray">
         <div class="mw8 center">
-            {{ range .Params.authors }}
-            {{ $author := (print "/noi/autori/" .) }}
-            {{ with $.Site.GetPage $author }}
-                <h3>{{ .Title }}</h3>
-                {{ .Content }}
-            {{ end }}
-            {{ end }}
+            <div class="flex flex-wrap">
+                <div class="w-100 w-20-ns pa2">
+                    {{ range first 1 (.Resources.ByType "image") -}}
+                    <img class="db h-auto br-100" src={{ (.Fill "200x200").RelPermalink }}>
+                    {{ end -}}
+                </div>
+                <div class="w-100 w-80-ns pa2">
+                    <h1 class="f3 tracked ttu lh-title">{{ .Title }}</h1>
+                    {{ with .Params.website}}
+                    <div class="pa2">
+                        <i class="fas fa-link"></i> <a class="black-80 overflow-auto" href="{{ . }}">{{ .  }}</a>
+                    </div>
+                    {{ end }}
+                    {{ with .Params.mail}}
+                    <div class="pa2">
+                        <i class="far fa-envelope"></i> <a class=" link black-80 overflow-auto" href="mailto:{{ . }}">{{ . }}</a>
+                    </div>
+                    {{ end }}
+                    <div class="f5 f5-ns cf lh-copy">
+                    {{ .Content }}
+                    </div>
+                </div>
+            </div>
         </div>
     </article>
+    {{ end }}
+    {{ end }}
 </section>
 
 <section class="w-100">
