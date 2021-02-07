@@ -2,12 +2,15 @@
 title: "Agaro"
 date: 2011-06-16T16:09:01+01:00
 draft: true
+authors:
+    - pelton1989
+    - phante
 alias: "/le-dighe/article/Agaro"
 images:
     - coronamento.jpg
 resources:
     - src: coronamento.jpg
-      name: logo_large.jpg
+      name: logo.jpg
       title: Coronamento della diga
       params:
         author: Uno fico
@@ -16,11 +19,13 @@ resources:
       params:
         author: ProgettoDighe
         copyright: CA
+tags:
+    - agaro
+    - toce
+series:
+    - agaro-goglio
 categories:
   - diga_categoria
-tags:
-  - diga_tags
-  - taggo_bello
 keywords:
   - diga_keyworda
 diga:
