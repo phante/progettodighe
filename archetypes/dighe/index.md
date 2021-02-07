@@ -6,6 +6,7 @@ images:
 resources:
 categories:
 tags:
+series:
 keywords:
 diga:
     condizione:

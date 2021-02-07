@@ -5,6 +5,7 @@ draft: true
 authors:
     - pelton1989
     - phante
+    - Autore Non Censito
 alias: "/le-dighe/article/Agaro"
 images:
     - coronamento.jpg

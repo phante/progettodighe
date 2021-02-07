@@ -1,0 +1,51 @@
+{{ range .Params.authors }}
+{{ $name := . }}
+{{ $author := (print "/noi/autori/" .) }}
+{{ with $.Site.GetPage $author }}
+<article id={{ $name }} class="ph3 ph5-ns pv4 pv5-ns mt2 bg-light-gray">
+    <div class="mw8 center">
+        <div class="flex flex-wrap">
+            <div class="w-100 w-20-ns pa2">
+                {{ range first 1 (.Resources.ByType "image") -}}
+                <img class="db h-auto br-100" src={{ (.Fill "200x200").RelPermalink }}>
+                {{ end -}}
+            </div>
+            <div class="w-100 w-80-ns pa2">
+                <h1 class="f3 tracked ttu lh-title">{{ .Title }}</h1>
+                {{ with .Params.progettodighe}}
+                <div class="pa2">
+                    Forum <a class="black-80 overflow-auto" href="https://www.progettodighe.it/forum/memberlist.php?mode=viewprofile&u={{ .id }}">{{ .name  }}</a>
+                </div>
+                {{ end }}
+                {{ with .Params.website}}
+                <div class="pa2">
+                    <i class="fas fa-link"></i> <a class="black-80 overflow-auto" href="{{ . }}">{{ .  }}</a>
+                </div>
+                {{ end }}
+                {{ with .Params.mail}}
+                <div class="pa2">
+                    <i class="far fa-envelope"></i> <a class=" link black-80 overflow-auto" href="mailto:{{ . }}">{{ . }}</a>
+                </div>
+                {{ end }}
+                {{ with .Params.phone}}
+                <div class="pa2">
+                    <i class="fas fa-phone"></i> {{ . }}
+                </div>
+                {{ end }}
+                <div class="pa2">
+                    {{ with .Params.twitter -}}<a class="f3 link hover-silver near-black dib h2 mr3" href="https://twitter.com/{{ . }}" title="Twitter"><i class="fab fa-twitter-square"></i></a>{{ end }}
+                    {{ with .Params.instagram -}}<a class="f3 link hover-silver near-black dib h2 mr3" href="https://www.instagram.com/{{ . }}" title="Instagram"><i class="fab fa-instagram"></i></a>{{ end }}
+                    {{ with .Params.facebook -}}<a class="f3 link near-black hover-silver dib h2 mr3" href="https://www.facebook.com/{{ . }}" title="Facebook"><i class="fab fa-facebook-square"></i></a>{{ end }}
+                    {{ with .Params.youtube -}}<a class="f3 link hover-silver near-black dib h2 mr3" href="https://www.youtube.com/channel/{{ . }}" title="YouTube"><i class="fab fa-youtube"></i></a>{{ end }}
+                    {{ with .Params.telegram -}}<a class="f3 link hover-silver near-black dib h2 mr3" href="https://t.me/{{ . }}" title="Telegram"><i class="fab fa-telegram"></i></a>{{ end }}
+                    {{ with .Params.whatsapp -}}<a class="f3 link hover-silver near-black dib h2 mr3" href="https://wa.me/{{ . }}" title="WhatsApp"><i class="fab fa-whatsapp-square"></i></a>{{ end }}
+                </div>
+                <div class="f5 f5-ns cf lh-copy">
+                {{ .Content }}
+                </div>
+            </div>
+        </div>
+    </div>
+</article>
+{{ end }}
+{{ end }}
