@@ -1,9 +1,9 @@
 [
-    {{ range $index, $e := .Pages }}
-    {{- if $index }}, {{ end }}
-    {
-        "url": "{{ .RelPermalink }}",
-        "name": "{{ .Title }}"
-    }
-    {{ end }}
+{{- range $index, $e := .Pages -}}
+{{- if $index }}, {{ end }}
+{
+    "url": "{{ .Permalink }}",
+     "name": "{{ .Title }}"
+}
+{{- end -}}
 ]

@@ -15,4 +15,4 @@ telegram:
 whatsapp: 
 ---
 
-Uno dei giovani redattori di ProgettoDighe. 3311148893
+Uno dei giovani redattori di ProgettoDighe.
