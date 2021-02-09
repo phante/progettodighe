@@ -92,7 +92,7 @@
             <h3 class="f3 tracked ttu lh-title">Immagini</h3>
             {{ range . -}}
             <a 
-                data-fslightbox class="link black-80"
+                data-fslightbox="images-list-lightbox" class="link black-80"
                 data-caption="{{ .Title }} - {{ with .Params.author }}{{- . -}}{{ end }} - {{ with .Params.copyright }}{{- . -}}{{ end }}"
                 href={{ .Permalink }} 
                 type="{{ .MediaType.Type }}">

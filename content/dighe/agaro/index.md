@@ -3,8 +3,8 @@ title: "Agaro"
 date: 2011-06-16T16:09:01+01:00
 draft: true
 authors:
-    - pelton1989
-    - phante
+    - emoreni
+    - edeltedesco
     - Autore Non Censito
 alias: "/le-dighe/article/Agaro"
 images:
@@ -91,4 +91,4 @@ Formato https://www.scribbr.it/stile-apa/riferimenti-bibliografici-seguendo-le-r
 - CognomeAutore, InizialiNome & CognomeAutore, InizialiNome. (Anno). Titolo Articolo. Titolo Rivista, Volume(Numero Issue), Numero di pagina.
 - CognomeAutore, InizialiNome. (Anno, Giorno Mese). Titolo Articolo [TipoFonteInternet]. Disponibile, Giorno Mese, Anno, da http://URL
 
-![Diga da valle](diga_da_valle.jpg "Diga da valle")
+![Diga da valle](diga_da_valle.jpg "Diga da valle 2")

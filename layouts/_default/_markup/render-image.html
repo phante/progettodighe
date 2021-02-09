@@ -1,0 +1,11 @@
+<figure class="dt mw7 center">
+    <div class="db dtc-ns v-mid-ns">
+        <a href="{{ .Destination | safeURL }}" data-fslightbox>
+            <img src="{{ .Destination | safeURL }}" class="w-100 mw7 w5-ns" {{ with .Text }}alt="{{ . }}"{{ end }} {{ with .Title }}title="{{ . }}"{{ end }}>
+        </a>
+    </div>
+    <figcaption class="db dtc-ns v-mid ph2 pr0-ns pl3-ns">
+        {{ with .Title }}<h4 class="f6 ttu tracked">{{ . }}</h4>{{ end }}
+        {{ with .Text }}<p class="lh-copy">{{ . }}</p>{{ end }}
+    </figcaption>
+</figure>

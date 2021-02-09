@@ -1,8 +1,8 @@
 ---
 headless: true
 title: pelton1989
-mail: enricomr1995@hotmail.it
-phone: +39 331 1148893
+mail: 
+phone: 
 website: 
 progettodighe: 
     name: pelton1989
