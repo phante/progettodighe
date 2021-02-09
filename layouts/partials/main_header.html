@@ -70,7 +70,7 @@
                     </div>
                     {{ end -}}
                     <!-- div class="pa2">
-                        <i class="fas fa-link"></i> <a class="black-80" href="(#URL_SITE)">[(#NOM_SITE|sinon{[(#URL_SITE|couper{80})]})]</a>
+                        <i class="fas fa-link">{{ partial "svg/link-solid.svg" }}"</i> <a class="black-80" href="(#URL_SITE)">[(#NOM_SITE|sinon{[(#URL_SITE|couper{80})]})]</a>
                     </div -->
                     <div class="pa2">
                         <p class="f6 black-50 tracked">pubblicato il <time class="f5 fw4 mt2 black-60" datetime={{ .Date.Format "2006-01-02T15:04:05Z07:00" | safeHTML }}>

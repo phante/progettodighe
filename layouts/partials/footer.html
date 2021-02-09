@@ -12,26 +12,30 @@
                 Eccetto dove specificamente indicato questo sito è licenziato sotto <a class="link" rel="license"
                 href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0<img
                     style="height:22px!important;margin-left:3px;vertical-align:text-bottom;"
-                    src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" /><img
+                    src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" alt="Creative Commons"/><img
                     style="height:22px!important;margin-left:3px;vertical-align:text-bottom;"
-                    src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" /><img
+                    src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" alt="Attribution"/><img
                     style="height:22px!important;margin-left:3px;vertical-align:text-bottom;"
-                    src="https://mirrors.creativecommons.org/presskit/icons/sa.svg?ref=chooser-v1" /></a>
+                    src="https://mirrors.creativecommons.org/presskit/icons/sa.svg?ref=chooser-v1" alt="ShareAlike" /></a>
             </p>
         </div>
         <div class="db dtc-ns black-70 tc tr-ns v-mid f2">
             <a class="link near-black hover-silver dib h2 w2 mr3" href="https://www.facebook.com/progettodighe" title="Facebook">
-                <i class="fab fa-facebook-square"></i>
+                <!--i class="fab fa-facebook-square"></i-->
+                {{ partial "svg/facebook-square-brands.svg"}}
             </a>
             <a class="link hover-silver near-black dib h2 w2 mr3" href="https://www.instagram.com/progettodighe.it/" title="Instagram">
-                <i class="fab fa-instagram"></i>
+                <!--i class="fab fa-instagram"></i-->
+                {{ partial "svg/instagram-square-brands.svg"}}
             </a>
             <a class="link hover-silver near-black dib h2 w2 mr3" href="https://www.youtube.com/user/progettodighe" title="youtube">
-                <i class="fab fa-youtube"></i>
+                <!--i class="fab fa-youtube"></i-->
+                {{ partial "svg/youtube-square-brands.svg"}}
             </a>
             {{ with .OutputFormats.Get "rss" -}}
             <a class="link hover-silver near-black dib h2 w2 mr3" href="{{ .Permalink }}" title="RSS">
-                <i class="fas fa-rss"></i>
+                <!--i class="fas fa-rss"></i-->
+                {{ partial "svg/rss-square-solid.svg"}}
             </a>
             {{ end -}}
         </div>

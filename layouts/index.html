@@ -51,7 +51,7 @@
         {{- with $scratch.Get "headerImage" -}}
         {{ if ge .Width 500}}
         <div class="aspect-ratio aspect-ratio--16x9 mb4">
-            <a class="link black-80" href="{{ $article.Permalink }}">
+            <a class="link black-80" href="{{ $article.Permalink }}" aria-label={{ .Title }}>
                 <div class="aspect-ratio--object cover br4" style="background:url({{ .Permalink }}) center;"></div>
             </a>
         </div>
@@ -61,7 +61,7 @@
         <div class="f5 f4-ns lh-copy">
             {{ .Summary }}
             <div class="mt3">
-                <a class="link black-80" href="{{ .Permalink }}">(continua) <i class="fas fa-arrow-alt-circle-right"></i></a>
+                <a class="link black-80" href="{{ .Permalink }}" >(continua) {{ partial "svg/arrow-alt-circle-right-solid.svg" }}</a>
             </diV>
         </div>
     </article>

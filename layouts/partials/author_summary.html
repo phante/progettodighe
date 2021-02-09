@@ -19,26 +19,26 @@
                 {{ end }}
                 {{ with .Params.website}}
                 <div class="pa2">
-                    <i class="fas fa-link"></i> <a class="black-80 overflow-auto" href="{{ . }}">{{ .  }}</a>
+                    <i class="fas fa-link">{{ partial "svg/link-solid.svg" }}</i> <a class="black-80 overflow-auto" href="{{ . }}">{{ .  }}</a>
                 </div>
                 {{ end }}
                 {{ with .Params.mail}}
                 <div class="pa2">
-                    <i class="far fa-envelope"></i> <a class=" link black-80 overflow-auto" href="mailto:{{ . }}">{{ . }}</a>
+                    <i class="far fa-envelope">{{ partial "svg/envelope-regular.svg" }}</i> <a class=" link black-80 overflow-auto" href="mailto:{{ . }}">{{ . }}</a>
                 </div>
                 {{ end }}
                 {{ with .Params.phone}}
                 <div class="pa2">
-                    <i class="fas fa-phone"></i> {{ . }}
+                    <i class="fas fa-phone">{{ partial "svg/phone-solid.svg" }}</i> {{ . }}
                 </div>
                 {{ end }}
                 <div class="pa2">
-                    {{ with .Params.twitter -}}<a class="f3 link hover-silver near-black dib h2 mr3" href="https://twitter.com/{{ . }}" title="Twitter"><i class="fab fa-twitter-square"></i></a>{{ end }}
-                    {{ with .Params.instagram -}}<a class="f3 link hover-silver near-black dib h2 mr3" href="https://www.instagram.com/{{ . }}" title="Instagram"><i class="fab fa-instagram"></i></a>{{ end }}
-                    {{ with .Params.facebook -}}<a class="f3 link near-black hover-silver dib h2 mr3" href="https://www.facebook.com/{{ . }}" title="Facebook"><i class="fab fa-facebook-square"></i></a>{{ end }}
-                    {{ with .Params.youtube -}}<a class="f3 link hover-silver near-black dib h2 mr3" href="https://www.youtube.com/channel/{{ . }}" title="YouTube"><i class="fab fa-youtube"></i></a>{{ end }}
-                    {{ with .Params.telegram -}}<a class="f3 link hover-silver near-black dib h2 mr3" href="https://t.me/{{ . }}" title="Telegram"><i class="fab fa-telegram"></i></a>{{ end }}
-                    {{ with .Params.whatsapp -}}<a class="f3 link hover-silver near-black dib h2 mr3" href="https://wa.me/{{ . }}" title="WhatsApp"><i class="fab fa-whatsapp-square"></i></a>{{ end }}
+                    {{ with .Params.twitter -}}<a class="f3 link hover-silver near-black dib h2 mr3" href="https://twitter.com/{{ . }}" title="Twitter"><i class="fab fa-twitter-square">{{ partial "svg/twitter-square-brands.svg" }}</i></a>{{ end }}
+                    {{ with .Params.instagram -}}<a class="f3 link hover-silver near-black dib h2 mr3" href="https://www.instagram.com/{{ . }}" title="Instagram"><i class="fab fa-instagram">{{ partial "svg/instagram-brands.svg" }}</i></a>{{ end }}
+                    {{ with .Params.facebook -}}<a class="f3 link near-black hover-silver dib h2 mr3" href="https://www.facebook.com/{{ . }}" title="Facebook"><i class="fab fa-facebook-square">{{ partial "svg/facebook-square-brands.svg" }}</i></a>{{ end }}
+                    {{ with .Params.youtube -}}<a class="f3 link hover-silver near-black dib h2 mr3" href="https://www.youtube.com/channel/{{ . }}" title="YouTube"><i class="fab fa-youtube">{{ partial "svg/youtube-square-brands.svg" }}</i></a>{{ end }}
+                    {{ with .Params.telegram -}}<a class="f3 link hover-silver near-black dib h2 mr3" href="https://t.me/{{ . }}" title="Telegram"><i class="fab fa-telegram">{{ partial "svg/telegram-brands.svg" }}</i></a>{{ end }}
+                    {{ with .Params.whatsapp -}}<a class="f3 link hover-silver near-black dib h2 mr3" href="https://wa.me/{{ . }}" title="WhatsApp"><i class="fab fa-whatsapp-square">{{ partial "svg/whatsapp-square-brands.svg" }}</i></a>{{ end }}
                 </div>
                 <div class="f5 f5-ns cf lh-copy">
                 {{ .Content }}
