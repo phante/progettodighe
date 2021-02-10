@@ -43,7 +43,7 @@
                 {{ else -}}
                     {{ with .Params.tags -}}
                     <div class="pa2">
-                        <i class="fas fa-hashtag"></i>
+                        {{ partial "svg/hashtag-solid.svg" . }}<!-- i class="fas fa-hashtag"></i -->
                         {{ range $index, $e := . -}}
                         {{ if $index }} | {{ end }}
                         <a class="black-80" href="{{ "/tags/" | relLangURL }}{{ . | urlize }}" title="{{- . -}}">{{- . -}}</a>
@@ -51,11 +51,11 @@
                     </div>
                     {{ end -}}
                     <div class="pa2">
-                        <i class="fas fa-user-clock"></i> Tempo di lettura {{ .ReadingTime }} minut{{ if eq .ReadingTime 1 }}o{{else}}i{{ end }}
+                        {{ partial "svg/user-clock-solid.svg" . }}<!-- i class="fas fa-user-clock"></i--> Tempo di lettura {{ .ReadingTime }} minut{{ if eq .ReadingTime 1 }}o{{else}}i{{ end }}
                     </div>
                     {{ with .Params.authors -}}
                     <div class="pa2">
-                        <i class="fas fa-at"></i> 
+                        {{ partial "svg/at-solid.svg" . }}<!--i class="fas fa-at"></i--> 
                         {{ range $index, $e := . -}}
                         {{ if $index }} | {{ end -}}
                         {{ $author := (print "/noi/autori/" $e ) -}}
@@ -70,7 +70,7 @@
                     </div>
                     {{ end -}}
                     <!-- div class="pa2">
-                        <i class="fas fa-link">{{ partial "svg/link-solid.svg" }}"</i> <a class="black-80" href="(#URL_SITE)">[(#NOM_SITE|sinon{[(#URL_SITE|couper{80})]})]</a>
+                        {{ partial "svg/link-solid.svg" }} <a class="black-80" href="(#URL_SITE)">[(#NOM_SITE|sinon{[(#URL_SITE|couper{80})]})]</a>
                     </div -->
                     <div class="pa2">
                         <p class="f6 black-50 tracked">pubblicato il <time class="f5 fw4 mt2 black-60" datetime={{ .Date.Format "2006-01-02T15:04:05Z07:00" | safeHTML }}>

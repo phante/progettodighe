@@ -1,15 +1,13 @@
 <footer class="pa4 pa5-l black-70 bt b--black-10">
     <h1 class="w-100 pv0 f5 fw6 ttu tracked mb4">Mantenuto e gestito da Elvis Del Tedesco e dalla comunit&agrave; di ProgettoDighe dal 2005</h1>
-    {{ with .Site.Params.webmasterMail }}
-    <a class="black-70 f3 f2-ns fw6 tl link dim dib pv3 mt2 mb4 mb0-l" href="mailto:{{ . }}" >
-        {{ . }}
-    </a>
-    {{ end }}
+    {{ with .Site.Params.webmasterMail -}}
+    <a class="black-70 f3 f2-ns fw6 tl link dim dib pv3 mt2 mb4 mb0-l" href="mailto:{{ . }}" >{{ . }}</a>
+    {{ end -}}
 
     <div class="dt dt--fixed w-100" >
         <div class="dn dtc-ns v-mid">
             <p class="f6 black-70 dib pr3 mb3" xmlns:dct="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#" >
-                Eccetto dove specificamente indicato questo sito è licenziato sotto <a class="link" rel="license"
+                Eccetto dove esplicitamente indicato, i contenuti sono licenziati secondo <a class="link black-70" rel="license"
                 href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0<img
                     style="height:22px!important;margin-left:3px;vertical-align:text-bottom;"
                     src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" alt="Creative Commons"/><img
@@ -21,23 +19,28 @@
         </div>
         <div class="db dtc-ns black-70 tc tr-ns v-mid f2">
             <a class="link near-black hover-silver dib h2 w2 mr3" href="https://www.facebook.com/progettodighe" title="Facebook">
-                <!--i class="fab fa-facebook-square"></i-->
-                {{ partial "svg/facebook-square-brands.svg"}}
+                {{ partial "svg/facebook-square-brands.svg"}}<!--i class="fab fa-facebook-square"></i-->
             </a>
             <a class="link hover-silver near-black dib h2 w2 mr3" href="https://www.instagram.com/progettodighe.it/" title="Instagram">
-                <!--i class="fab fa-instagram"></i-->
-                {{ partial "svg/instagram-square-brands.svg"}}
+                {{ partial "svg/instagram-square-brands.svg"}}<!--i class="fab fa-instagram"></i-->
             </a>
             <a class="link hover-silver near-black dib h2 w2 mr3" href="https://www.youtube.com/user/progettodighe" title="youtube">
-                <!--i class="fab fa-youtube"></i-->
-                {{ partial "svg/youtube-square-brands.svg"}}
+                {{ partial "svg/youtube-square-brands.svg"}}<!--i class="fab fa-youtube"></i-->
             </a>
             {{ with .OutputFormats.Get "rss" -}}
             <a class="link hover-silver near-black dib h2 w2 mr3" href="{{ .Permalink }}" title="RSS">
-                <!--i class="fas fa-rss"></i-->
-                {{ partial "svg/rss-square-solid.svg"}}
+                {{ partial "svg/rss-square-solid.svg"}}<!--i class="fas fa-rss"></i-->
             </a>
             {{ end -}}
         </div>
     </div>
+
+    <div class="dt dt--fixed w-100" >
+        <div class="dn dtc-ns v-mid">
+            <p class="f7 black-70 dib pr3 mb3">
+                Questo sito incorpora icone di <a class="link black-70" rel="license" href="https://fontawesome.com/license/free">Font Awesome Free</a>
+            </p>
+        </div>
+    </div>
+
 </footer>

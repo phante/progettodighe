@@ -16,11 +16,6 @@
     {{ partial "include_style.html" . -}}
     {{ end -}}
 
-    {{ with resources.Get "/asset/fa/js/all.js" -}}
-    {{ $js := . | js.Build (dict "minify" true) | fingerprint }}
-    <script defer src={{ $js.RelPermalink }}></script>
-    {{ end -}}
-    
     {{ if hugo.IsProduction }}
     <link rel="preconnect" href="https://www.google-analytics.com">
     <link rel="preconnect" href="https://tpc.googlesyndication.com">
