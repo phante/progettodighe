@@ -5,21 +5,12 @@ draft: true
 authors:
     - emoreni
     - edeltedesco
-    - Autore Non Censito
 alias: "/le-dighe/article/Agaro"
 images:
-    - coronamento.jpg
 resources:
     - src: coronamento.jpg
       name: logo.jpg
       title: Coronamento della diga
-      params:
-        author: Uno fico
-        copyright: NAAAAA
-    - src: '*'
-      params:
-        author: ProgettoDighe
-        copyright: CA
 tags:
     - agaro
     - toce
