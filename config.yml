@@ -1,4 +1,4 @@
-baseURL: https://dev.progettodighe.it/main
+baseURL: https://www.progettodighe.it/main
 title: ProgettoDighe
 
 languageCode: it-it
@@ -16,7 +16,7 @@ params:
     webmaster: Elvis Del Tedesco
     webmasterMail: info@progettodighe.it
     disqusShortname: progettodighe
-theme: ananke
+#theme: ananke
 
 outputs:
   section:

@@ -1,0 +1,11 @@
+{{ $cssFile := . -}}
+{{ with resources.Get $cssFile -}}
+    {{ $options := (dict "targetPath" $cssFile "enableSourceMap" true "precision" 6 "includePaths" (slice "node_modules")) -}}
+    {{ $style := . | resources.ToCSS $options | resources.PostCSS (dict "use" "postcss-cssnext") | minify -}}
+    {{ if hugo.IsProduction -}}
+        {{ $style = . | fingerprint -}}
+    {{ end -}}
+    {{ with $style -}}
+        <link rel="stylesheet" href="{{ .RelPermalink }}" >
+    {{ end -}}
+{{ end -}}

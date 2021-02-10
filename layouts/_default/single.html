@@ -58,13 +58,6 @@
 </script>
 {{ end }}
 
-{{ define "custom_css" }}
-    {{- with resources.Get "/asset/css/leaflet/leaflet.css" -}}
-    {{ $style := . | minify | fingerprint -}}
-    <link rel="stylesheet" href={{ $style.RelPermalink }}>
-    {{ end -}}
-{{ end }}
-
 {{ define "main" }}
 {{ partial "main_header.html" . }}
 
