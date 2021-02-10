@@ -39,13 +39,24 @@
                             {{ if .Resources.Match "logo*" -}}
                                 {{ with .Resources.GetMatch "logo*" -}}
                                 {{ $logo := .Fill "300x300" -}}
-                                <img style="background-image:url({{ $logo.Permalink }});" class="db bg-center cover aspect-ratio--object br4">
+                                {{ $lqip := .Resize "10x q20" }}
+                                <img src={{ $logo.Permalink }} style="background: url(data:image/jpeg;base64,{{ $lqip.Content | base64Encode }}); background-size: cover" 
+                                    class="db bg-center cover aspect-ratio--object br4" loading="lazy">
                                 {{ end -}}
-                            {{ else -}}
+                            {{ else if .Resources.ByType "image" -}}
                                 {{ range first 1 (.Resources.ByType "image") -}}
                                 {{ $logo := .Fill "300x300" -}}
-                                <img style="background-image:url({{ $logo.Permalink }});" class="db bg-center cover aspect-ratio--object br4">
+                                {{ $lqip := .Resize "10x q20" }}
+                                <img src={{ $logo.Permalink }} style="background: url(data:image/jpeg;base64,{{ $lqip.Content | base64Encode }}); background-size: cover" 
+                                    class="db bg-center cover aspect-ratio--object br4" loading="lazy">
                                 {{ end -}}
+                            {{ else }}
+                            	{{ $bgColor := slice "bg-lightest-blue" "bg-washed-blue" "bg-washed-green" }}
+                                {{ range first 1 ($bgColor | shuffle ) }}
+                                <div class="{{ . }} db bg-center cover aspect-ratio--object br4">
+                                    <img class="db h-auto o-10" src={{ "/asset/brand/PDLogo.svg" | relURL }} alt="ProgettoDighe Logo" loading="eager">
+                                </div>
+                                {{ end }}
                             {{ end -}}
                         </div>
                         <h2 class="f4 tracked-tight lh-title black-80">{{ .Title }}</h2>

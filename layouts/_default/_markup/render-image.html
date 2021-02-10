@@ -1,7 +1,12 @@
+{{ $src := .Page.Resources.GetMatch .Destination }}
+{{- $lqip := $src.Resize "20x q10" -}}
 <figure class="dt mw7 center">
-    <div class="db dtc-ns v-mid-ns">
+    <div class="db dtc-ns v-mid-ns" >
         <a href="{{ .Destination | safeURL }}" data-fslightbox>
-            <img src="{{ .Destination | safeURL }}" class="w-100 mw7 w5-ns" {{ with .Text }}alt="{{ . }}"{{ end }} {{ with .Title }}title="{{ . }}"{{ end }}>
+            <img src="{{ .Destination | safeURL }}" 
+            class="w-100 mw7 w5-ns" {{ with .Text }}alt="{{ . }}"{{ end }} {{ with .Title }}title="{{ . }}"{{ end }}
+            style="background: url(data:image/jpeg;base64,{{ $lqip.Content | base64Encode }}); background-size: cover"
+            width={{ $src.Width }} loading="lazy">
         </a>
     </div>
     <figcaption class="db dtc-ns v-mid ph2 pr0-ns pl3-ns">

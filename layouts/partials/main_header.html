@@ -29,8 +29,12 @@
             {{ end -}}
 
             {{- with $scratch.Get "headerImage" -}}
+            {{ $lqip := .Resize "48x q20" }}
             <div class={{ $scratch.Get "headerImageClass" }}>
-                <img src={{ ($scratch.Get "headerImage").RelPermalink }} class="db w-100 h-auto br4">
+                <img src={{ .RelPermalink }} 
+                    class="db w-100 h-auto br4" 
+                    style="background: url(data:image/jpeg;base64,{{ $lqip.Content | base64Encode }}); background-size: cover"
+                    width="{{ .Width }}" height="{{ .Height }}" loading="lazy">
             </div>
             {{- end -}}
 

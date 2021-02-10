@@ -35,8 +35,8 @@
     <article class="bb pb3">
         <h1 class="f3 ttu lh-title"><a class="link black-80" href="{{ .Permalink }}">{{ .Title }}</a></h1>
         <p>Tempo di lettura {{ .ReadingTime }} minut{{ if eq .ReadingTime 1 }}o{{else}}i{{ end }}</p>
+        <time class="f5 fw4 mt2 black-60" datetime={{ .Lastmod.Format "2006-01-02T15:04:05Z07:00" | safeHTML }}></time>
         {{ $article := .}}
-
         {{ $scratch := newScratch -}}
         {{ if .Resources.Match "logo*" -}}
             {{ with .Resources.GetMatch "logo*.jpg" -}}
@@ -49,13 +49,14 @@
         {{ end -}}
 
         {{- with $scratch.Get "headerImage" -}}
-        {{ if ge .Width 500}}
-        <div class="aspect-ratio aspect-ratio--16x9 mb4">
+        {{- if ge .Width 500 -}}
+        {{ $lqip := .Resize "48x q20" }}
+        <div class="aspect-ratio aspect-ratio--16x9 mb4" style="background: url(data:image/jpeg;base64,{{ $lqip.Content | base64Encode }}); background-size: cover">
             <a class="link black-80" href="{{ $article.Permalink }}" aria-label={{ .Title }}>
                 <div class="aspect-ratio--object cover br4" style="background:url({{ .Permalink }}) center;"></div>
             </a>
         </div>
-        {{ end }}
+        {{- end -}}
         {{- end -}}
 
         <div class="f5 f4-ns lh-copy">

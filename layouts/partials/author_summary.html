@@ -7,7 +7,7 @@
         <div class="flex flex-wrap">
             <div class="w-100 w-20-ns pa2">
                 {{ range first 1 (.Resources.ByType "image") -}}
-                <img class="db h-auto br-100" src={{ (.Fill "200x200").RelPermalink }}>
+                <img class="db h-auto br-100" src={{ (.Fill "200x200").RelPermalink }} loading="lazy">
                 {{ end -}}
             </div>
             <div class="w-100 w-80-ns pa2">

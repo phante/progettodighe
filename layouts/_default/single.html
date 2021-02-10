@@ -90,7 +90,10 @@
                 href={{ .Permalink }} 
                 type="{{ .MediaType.Type }}">
                 {{ $image := .Fill "100x100" -}}
-                <img src={{ $image.RelPermalink }} width={{$image.Width}} height={{$image.Height}}>
+                {{ $lqip := .Resize "10x q10" -}}
+                <img src={{ $image.RelPermalink }} width={{$image.Width}} height={{$image.Height}} 
+                style="background: url(data:image/jpeg;base64,{{ $lqip.Content | base64Encode }}); background-size: cover"
+                loading="lazy">
             </a>
             {{ end -}}
             {{ end -}}
@@ -129,5 +132,5 @@
 {{ end }}
 
 {{ define "footer_scripts" }}
-<script type="text/javascript" src={{ "/asset/js/fslightbox/fslightbox.js" | relURL}}></script>
+<script async type="text/javascript" src={{ "/asset/js/fslightbox/fslightbox.js" | relURL}}></script>
 {{ end }}
