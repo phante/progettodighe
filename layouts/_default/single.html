@@ -91,9 +91,10 @@
                 type="{{ .MediaType.Type }}">
                 {{ $image := .Fill "100x100" -}}
                 {{ $lqip := .Resize "10x q10" -}}
-                <img src={{ $image.RelPermalink }} width={{$image.Width}} height={{$image.Height}} 
-                style="background: url(data:image/jpeg;base64,{{ $lqip.Content | base64Encode }}); background-size: cover"
-                loading="lazy">
+                <img class="lazy"
+                data-src={{ $image.RelPermalink }} 
+                width={{$image.Width}} height={{$image.Height}} 
+                src="data:image/jpeg;base64,{{ $lqip.Content | base64Encode }}" >
             </a>
             {{ end -}}
             {{ end -}}

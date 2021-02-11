@@ -33,27 +33,26 @@
 
     {{ range first 10 .Site.RegularPages.ByLastmod.Reverse -}}
     <article class="bb pb3">
-        <h1 class="f3 ttu lh-title"><a class="link black-80" href="{{ .Permalink }}">{{ .Title }}</a></h1>
+        <h1 class="f3 ttu lh-title"><a class="link black-80" href="{{ .RelPermalink }}">{{ .Title }}</a></h1>
         <p>Tempo di lettura {{ .ReadingTime }} minut{{ if eq .ReadingTime 1 }}o{{else}}i{{ end }}</p>
         <time class="f5 fw4 mt2 black-60" datetime={{ .Lastmod.Format "2006-01-02T15:04:05Z07:00" | safeHTML }}></time>
-        {{ $article := .}}
+        {{ $article := . -}}
         {{ $scratch := newScratch -}}
         {{ if .Resources.Match "logo*" -}}
-            {{ with .Resources.GetMatch "logo*.jpg" -}}
-                {{ $scratch.Set "headerImage" . -}}
-            {{ end -}}
+            {{ $scratch.Set "headerImage" (.Resources.GetMatch "logo*.jpg") -}}
         {{- else -}}
             {{ range first 1 (.Resources.ByType "image") -}}
                 {{ $scratch.Set "headerImage" . -}}
             {{ end -}}
         {{ end -}}
-
         {{- with $scratch.Get "headerImage" -}}
         {{- if ge .Width 500 -}}
-        {{ $lqip := .Resize "48x q20" }}
-        <div class="aspect-ratio aspect-ratio--16x9 mb4" style="background: url(data:image/jpeg;base64,{{ $lqip.Content | base64Encode }}); background-size: cover">
-            <a class="link black-80" href="{{ $article.Permalink }}" aria-label={{ .Title }}>
-                <div class="aspect-ratio--object cover br4" style="background:url({{ .Permalink }}) center;"></div>
+        {{ $img := .Fill "880x495" }}
+        {{ $lqip := .Resize "50x28 q20" }}
+        <div class="aspect-ratio aspect-ratio--16x9 mb4">
+            <a class="link black-80" href="{{ $article.RelPermalink }}" aria-label={{ .Title }}>
+                <!-- div class="aspect-ratio--object cover br4" style="background:url({{ $img.Permalink }}) center;"></div -->
+                <img class="lazy aspect-ratio--object cover br4" src="{{ $lqip.RelPermalink }}" data-src="{{ $img.RelPermalink }}" />
             </a>
         </div>
         {{- end -}}
@@ -62,7 +61,7 @@
         <div class="f5 f4-ns lh-copy">
             {{ .Summary }}
             <div class="mt3">
-                <a class="link black-80" href="{{ .Permalink }}" >(continua) {{ partial "svg/arrow-alt-circle-right-solid.svg" }}</a>
+                <a class="link black-80" href="{{ .RelPermalink }}" >(continua) {{ partial "svg/arrow-alt-circle-right-solid.svg" }}</a>
             </diV>
         </div>
     </article>
