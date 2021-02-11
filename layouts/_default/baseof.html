@@ -8,6 +8,7 @@
     {{/* Ispirato da https://www.skcript.com/svr/perfect-seo-meta-tags-with-hugo/ */}}
     {{/* partial "meta.html" . */}}
     {{ block "custom_meta" . }}{{ end }}
+    {{ partial "favicon.html" . }}
 
     {{ with "/asset/css/main.css" -}}
     {{ partial "include_style.html" . -}}
@@ -34,6 +35,12 @@
     </main>
 
     {{ block "footer" . }}{{ partialCached "footer.html" . }}{{ end }}
+    
+    <script>window.lazyLoadOptions = {};</script>
+    {{ $js := resources.Get "asset/js/lazyload.iife.js" -}}
+    {{ $secureJS := $js | minify | fingerprint -}}
+    <script async type="text/javascript" src="{{ $secureJS.Permalink }}" integrity="{{ $secureJS.Data.Integrity }}"></script>
+
     {{ block "footer_scripts" . }}{{ end }}
 </body>
 </html>
