@@ -1,31 +1,26 @@
 <!DOCTYPE html>
 <html prefix="og: http://ogp.me/ns#" lang="{{ .Language }}">
-<head itemscope itemtype="{{ .Site.BaseURL }}">
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-
-    {{/* Ispirato da https://www.skcript.com/svr/perfect-seo-meta-tags-with-hugo/ */}}
-    {{/* partial "meta.html" . */}}
-    {{ block "custom_meta" . }}{{ end }}
-    {{ partial "favicon.html" . }}
-
-    {{ with "/asset/css/main.css" -}}
-    {{ partial "include_style.html" . -}}
-    {{ end -}}
-    {{ with "/asset/css/leaflet.css" -}}
-    {{ partial "include_style.html" . -}}
-    {{ end -}}
-
-    {{ if hugo.IsProduction }}
-    <link rel="preconnect" href="https://www.google-analytics.com">
-    <link rel="preconnect" href="https://tpc.googlesyndication.com">
-    <link rel="preconnect" href="https://pagead2.googlesyndication.com">
-    {{ partialCached "gtag.html" . }}
-    {{ partialCached "cookie.html" . }}
-    {{ partialCached "hotjar.html" . }}
-    <script data-ad-client="ca-pub-8950289255447363" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-    {{ end }}
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+{{ hugo.Generator }}
+<title>{{ if or .IsPage }}{{ .Title }} | {{ .CurrentSection.Title }} | {{ end }}{{ if .IsSection }}{{ .Title }} | {{end}}{{ .Site.Title }}</title>
+<meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{if .IsPage}}{{ .Summary }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}{{ end }}">
+{{ partial "favicon.html" . }}
+{{ with "/asset/css/main.css" }}{{ partial "include_style.html" . }}{{ end }}
+{{ with "/asset/css/leaflet.css" }}{{ partial "include_style.html" . }}{{ end }}
+{{ template "_internal/opengraph.html" . }}
+{{ template "_internal/twitter_cards.html" . }}
+{{ if hugo.IsProduction -}}
+<link rel="preconnect" href="https://www.google-analytics.com">
+<link rel="preconnect" href="https://tpc.googlesyndication.com">
+<link rel="preconnect" href="https://pagead2.googlesyndication.com">
+{{ partialCached "gtag.html" . }}
+{{ partialCached "cookie.html" . }}
+{{ partialCached "hotjar.html" . }}
+<script data-ad-client="ca-pub-8950289255447363" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+{{ end -}}
 </head>
 <body class="w100 sans-serif bg-white black-80">
     {{ block "header" . }}{{ partialCached "navigation.html" .}}{{ end }}
