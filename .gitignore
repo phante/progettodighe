@@ -2,3 +2,6 @@ public/
 resources/
 content/*
 content_old/
+
+package-lock.json
+node_modules/
